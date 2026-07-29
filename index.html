@@ -147,7 +147,7 @@ footer{margin-top:38px;padding-top:16px;border-top:1px solid var(--rule);
 
 <header class="top">
   <h1>Cut Program</h1>
-  <div class="sub">82.5 &rarr; 78 kg &nbsp;&middot;&nbsp; 16% &rarr; 11% BF &nbsp;&middot;&nbsp; 12&ndash;14 weeks</div>
+  <div class="sub"><span style="color:var(--accent)">build 2026-07-30d</span> &nbsp;&middot;&nbsp; 82.5 &rarr; 78 kg &nbsp;&middot;&nbsp; 16% &rarr; 11% BF &nbsp;&middot;&nbsp; 12&ndash;14 weeks</div>
   <dl class="keys">
     <div class="key"><dt>Calories</dt><dd>2,300</dd></div>
     <div class="key"><dt>Protein</dt><dd>180 g</dd></div>
@@ -651,7 +651,7 @@ footer{margin-top:38px;padding-top:16px;border-top:1px solid var(--rule);
 
 </main>
 
-<footer>Installed from your home screen, this works offline and remembers your weights. Always open it from the home-screen icon &mdash; Safari keeps separate storage. <span style="opacity:.6">build 2026-07-30c</span></footer>
+<footer>Installed from your home screen, this works offline and remembers your weights. Always open it from the home-screen icon &mdash; Safari keeps separate storage. <span style="opacity:.6">build 2026-07-30d</span></footer>
 
 </div>
 <div id="saved" role="status" aria-live="polite">Saved</div>
@@ -743,8 +743,21 @@ footer{margin-top:38px;padding-top:16px;border-top:1px solid var(--rule);
 
 <script>
 if ('serviceWorker' in navigator) {
+  var reloading = false;
+  navigator.serviceWorker.addEventListener('controllerchange', function(){
+    if (reloading) return;
+    reloading = true;
+    location.reload();
+  });
   window.addEventListener('load', function(){
-    navigator.serviceWorker.register('sw.js').catch(function(){});
+    navigator.serviceWorker.register('sw.js').then(function(reg){
+      reg.update();
+      setInterval(function(){ reg.update(); }, 30 * 60 * 1000);
+    }).catch(function(){});
+  });
+  document.addEventListener('visibilitychange', function(){
+    if (document.visibilityState !== 'visible') return;
+    navigator.serviceWorker.getRegistration().then(function(reg){ if (reg) reg.update(); });
   });
 }
 </script>

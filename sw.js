@@ -1,4 +1,4 @@
-var CACHE = 'cutprog-v2';
+var CACHE = 'cutprog-v3';
 var FILES = ['./', './index.html', './manifest.webmanifest',
              './icon-192.png', './icon-512.png', './apple-touch-icon.png'];
 
