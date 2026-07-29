@@ -147,24 +147,23 @@ footer{margin-top:38px;padding-top:16px;border-top:1px solid var(--rule);
 
 <header class="top">
   <h1>Cut Program</h1>
-  <div class="sub"><span style="color:var(--accent)">build 2026-07-30d</span> &nbsp;&middot;&nbsp; 82.5 &rarr; 78 kg &nbsp;&middot;&nbsp; 16% &rarr; 11% BF &nbsp;&middot;&nbsp; 12&ndash;14 weeks</div>
+  <div class="sub"><span style="color:var(--accent)">build 2026-07-30g</span> &nbsp;&middot;&nbsp; <span id="o-sub">set your numbers in section 05</span></div>
   <dl class="keys">
-    <div class="key"><dt>Calories</dt><dd>2,300</dd></div>
-    <div class="key"><dt>Protein</dt><dd>180 g</dd></div>
-    <div class="key"><dt>Fat</dt><dd>70 g</dd></div>
-    <div class="key"><dt>Carbs</dt><dd>235 g</dd></div>
-    <div class="key"><dt>Steps</dt><dd>8k &rarr; 12k</dd></div>
+    <div class="key"><dt>Calories</dt><dd id="o-kcal">2,300</dd></div>
+    <div class="key"><dt>Protein</dt><dd id="o-pro">180 g</dd></div>
+    <div class="key"><dt>Fat</dt><dd id="o-fat">70 g</dd></div>
+    <div class="key"><dt>Carbs</dt><dd id="o-carb">235 g</dd></div>
+    <div class="key"><dt>Steps</dt><dd id="o-steps">8k floor</dd></div>
     <div class="key"><dt>Lifting</dt><dd>7 / week</dd></div>
     <div class="key"><dt>Cardio</dt><dd>1 run + 2</dd></div>
-    <div class="key"><dt>Rate</dt><dd>0.45 kg/wk</dd></div>
+    <div class="key"><dt>Rate</dt><dd id="o-rate">0.45 kg/wk</dd></div>
   </dl>
 </header>
 
 <nav aria-label="Sections"><div class="navscroll">
-  <a href="#split">Split</a><a href="#sessions">Sessions</a><a href="#volume">Volume</a>
-  <a href="#progression">Progression</a><a href="#fatigue">Fatigue</a><a href="#cardio">Cardio</a>
-  <a href="#knees">Knees</a><a href="#macros">Macros</a><a href="#activity">Activity</a>
-  <a href="#food">Food</a><a href="#loop">Loop</a><a href="#data">Data</a>
+  <a href="#split">Split</a><a href="#sessions">Sessions</a><a href="#progression">Progression</a>
+  <a href="#cardio">Cardio</a><a href="#macros">Macros</a><a href="#activity">Activity</a>
+  <a href="#food">Food</a><a href="#data">Data</a>
 </div></nav>
 
 <main>
@@ -367,33 +366,8 @@ footer{margin-top:38px;padding-top:16px;border-top:1px solid var(--rule);
   </div>
 </section>
 
-<section id="volume">
-  <h2><span class="n">03</span> Weekly volume</h2>
-  <table>
-    <thead><tr><th>Muscle</th><th class="num">Sets / week</th></tr></thead>
-    <tbody>
-      <tr><td>Back / lats</td><td class="num">17</td></tr>
-      <tr><td>Chest</td><td class="num">15</td></tr>
-      <tr><td>Quads</td><td class="num">13</td></tr>
-      <tr><td>Triceps</td><td class="num">10.5</td></tr>
-      <tr><td>Biceps</td><td class="num">10.5</td></tr>
-      <tr><td>Hamstrings</td><td class="num">10.5</td></tr>
-      <tr><td>Side delts</td><td class="num">9.5</td></tr>
-      <tr><td>Calves</td><td class="num">9.5</td></tr>
-      <tr><td>Rear delts</td><td class="num">8</td></tr>
-      <tr><td>Upper traps</td><td class="num">2.3 direct</td></tr>
-      <tr><td>Abductors</td><td class="num">2.3 direct</td></tr>
-</tbody>
-  </table>
-  <p class="note">Lower days have fewer exercises because the lower body has fewer separate targets (quads, hams, glutes, calves) while upper has seven. Per muscle, quads at 14 sets are the second-highest in the programme. Arms count direct sets only &mdash; 25+ pressing and pulling sets sit on top. Lagging at week 4? Add one set each to Push A and Pull A. No more.</p>
-  <p class="note"><strong>Deliberately light, and why.</strong> Glutes get no direct work &mdash; squats, RDLs, hack squats and leg press cover hip extension adequately for a male physique. Forearms are covered by pull-ups, rows and heavy DB RDLs; if grip caps your RDL, use straps rather than adding grip work. Abductors and traps are at token volume because they are there for joint health and one visible gap, not for size. Nothing else is missing.</p>
-  <p class="note"><strong>Arms went up.</strong> They were the thinnest thing in the old split at 7 sets each, and they were trained last in an eight-exercise session, fatigued. On six-exercise push and pull days they get 10.5 sets and arrive with something left. That is the second real gain here.</p>
-  <p class="note"><strong>Why volume is not higher still.</strong> More sets do mean more growth, with no clear plateau in the meta-regressions &mdash; but that assumes you can recover from them. In a 500 kcal deficit at seven sessions a week you cannot, so the quality levers are doing the work instead: long muscle lengths, 1&ndash;2 RIR, 3.5&times; frequency. Push volume to 18&ndash;20 sets on your priority muscles in the gaining phase, not now.</p>
-  <p class="note"><strong>Deliberately not programmed:</strong> forearms (covered by pull-ups, rows and heavy DB RDLs &mdash; if grip caps your RDL, use straps rather than adding grip work), direct glutes (squats, RDLs, hack and lunges are enough), neck, and rotator cuff. If the shoulder keeps complaining, 2 sets of cable external rotation a week is cheap insurance.</p>
-</section>
-
 <section id="progression">
-  <h2><span class="n">04</span> Progression</h2>
+  <h2><span class="n">03</span> Progression</h2>
   <ol>
     <li>Pick a load you can hit at the bottom of the rep range at target RIR</li>
     <li>Add reps weekly until you reach the top of the range on every set</li>
@@ -407,35 +381,8 @@ footer{margin-top:38px;padding-top:16px;border-top:1px solid var(--rule);
   <p class="note"><strong>This is tuned for size, not maximal strength.</strong> Squat and bench appear about 1.2 times a week, which is plenty for hypertrophy but low for strength, where the lift is partly a skill needing 2&ndash;3 exposures. That trade is deliberate. Your 1RMs will lag what your muscle mass suggests &mdash; if you ever want the numbers, spend 4&ndash;6 weeks in the 4&ndash;6 rep range after the cut and they will catch up quickly.</p>
 </section>
 
-<section id="fatigue">
-  <h2><span class="n">05</span> Fatigue rules</h2>
-  <p class="lede">No rest days, so this is how fatigue gets managed. Check before each session.</p>
-  <table>
-    <thead><tr><th>Flag</th></tr></thead>
-    <tbody>
-      <tr><td>Lift down 2 sessions running</td></tr>
-      <tr><td>Under 6.5 h sleep</td></tr>
-      <tr><td>Joint sharp, not sore</td></tr>
-      <tr><td>Resting HR +7 bpm</td></tr>
-      <tr><td>Zero desire to train</td></tr>
-    </tbody>
-  </table>
-  <table>
-    <thead><tr><th>Flags</th><th>Action</th></tr></thead>
-    <tbody>
-      <tr><td class="lead">1</td><td>Train normally</td></tr>
-      <tr><td class="lead">2</td><td>Drop last 2 exercises, all 3 RIR, skip cardio</td></tr>
-      <tr><td class="lead">3+</td><td>As above <strong>+ take the day off</strong></td></tr>
-    </tbody>
-  </table>
-  <p class="note">The 3-flag rule is a stop-loss, not a rest day. Expect to use it about twice in 12 weeks. Weekly use means drop one cardio session, then trim Legs B.</p>
-  <div class="callout">
-    <p><strong>Deload &mdash; weeks 7 and 13.</strong> Half the sets, same loads, everything at 4 RIR, two easy low-impact sessions and no run. Still train all 7 days.</p>
-  </div>
-</section>
-
 <section id="cardio">
-  <h2><span class="n">06</span> Cardio</h2>
+  <h2><span class="n">04</span> Cardio</h2>
   <table>
     <thead><tr><th>Attached to</th><th>Session</th><th class="num">Time</th></tr></thead>
     <tbody>
@@ -444,81 +391,60 @@ footer{margin-top:38px;padding-top:16px;border-top:1px solid var(--rule);
       <tr><td>Push B</td><td>Bike intervals, 4 &times; 4</td><td class="num">~35 min</td></tr>
     </tbody>
   </table>
-  <p class="note"><strong>This is the biggest structural gain over upper/lower.</strong> Both hard cardio sessions now sit the day before an upper session, so running and intervals never precede a leg day at all. Zone 2, the softest session you do, is the only one landing before legs. Under the old split the run had to precede a leg day &mdash; there was nowhere else to put it.</p>
+  <p class="note">Both hard sessions sit the day before an upper day, so running and intervals never precede legs. Zone 2 is the only one landing before a leg day. Lift first if it&rsquo;s the same day.</p>
+
   <h3>The run &mdash; alternate each block</h3>
   <ul>
     <li><strong>A:</strong> steady 5k, controlled. Don&rsquo;t race it.</li>
     <li><strong>B:</strong> 5 &times; 1 km at goal pace, 90 sec walk. Or 6 &times; 800 m.</li>
   </ul>
-  <h3>Bike intervals &mdash; the Norwegian 4 &times; 4</h3>
+
+  <h3>Bike intervals &mdash; Norwegian 4 &times; 4</h3>
   <p>10 min warm-up &middot; <strong>4 &times; 4 min at 90&ndash;95% max HR, 3 min easy between</strong> &middot; 5 min cool-down.</p>
-  <p class="note">This is the single most studied protocol for raising VO2max &mdash; Helgerud 2007 found roughly 7% gains in 8 weeks, beating moderate continuous training at matched workload, and a later trial found it beat sprint intervals for both VO2max and stroke volume. The 4-minute length is the point: it is long enough to hold you near VO2max, which is what drives the adaptation. Don&rsquo;t shorten it.</p>
-  <h3>Low-impact options, best first</h3>
-  <ol>
-    <li>Cross trainer &mdash; closest to running</li>
-    <li>Incline treadmill walk (12&ndash;15%, 5&ndash;6 km/h) &mdash; most knee-friendly, doubles as steps</li>
-    <li>Bike &mdash; best for intervals, zero interference with lifting</li>
-  </ol>
-  <h3>Rules</h3>
-  <ul>
-    <li>Lift first if same day. Separate by 6 h+ where possible</li>
-    <li>Never run before a lower session</li>
-    <li>Low-impact runs 25&ndash;30% longer than the run it replaces</li>
-    <li>Zone 2 = full sentences, no gasping</li>
-    <li>Test 5k at weeks 1, 6 and 12</li>
-  </ul>
-  <h3>Is this enough? Is it too much?</h3>
-  <table>
-    <thead><tr><th>Dose</th><th>Verdict</th></tr></thead>
-    <tbody>
-      <tr><td>Guideline minimum</td><td>150 min moderate or 75 min vigorous / week</td></tr>
-      <tr><td>Maximum mortality benefit</td><td>3&ndash;5&times; the minimum. Past that the curve flattens</td></tr>
-      <tr><td><strong>You, here</strong></td><td>~150 min moderate-equivalent structured, plus 10&ndash;12k steps &mdash; roughly <strong>2.5&ndash;3&times; the minimum</strong></td></tr>
-      <tr><td>Too much, for you</td><td>4+ structured sessions, any session over 45&ndash;60 min, or a second run</td></tr>
-    </tbody>
-  </table>
-  <div class="callout">
-    <p><strong>You are already past the steep part of the curve.</strong> Adding a fourth session would buy a sliver of health benefit and cross the frequency threshold where interference with hypertrophy starts showing up. The remaining gains are in <em>quality</em>, not quantity &mdash; which is why the interval session is now a 4 &times; 4.</p>
-    <p>Worth separating two things: <strong>VO2max as an outcome has no ceiling of benefit</strong>, but <strong>cardio volume as an input has steep diminishing returns</strong>. You raise the first through intensity, not hours. Two to three hard sessions a week is where the VO2max research lands, and with the run alternating to intervals every other block, that is what you are doing.</p>
-  </div>
+  <p class="note">The 4-minute length is the mechanism &mdash; long enough to hold you near VO2max. Don&rsquo;t shorten it.</p>
 
-  <div class="callout">
-    <p><strong>Expect:</strong> sub-26 very likely. Sub-25 possible but not guaranteed on one run a week. Add the second run after the cut.</p>
-  </div>
-</section>
-
-<section id="knees">
-  <h2><span class="n">07</span> Knees</h2>
-  <table>
-    <thead><tr><th>Fix</th><th>Detail</th></tr></thead>
-    <tbody>
-      <tr><td><strong>Cadence</strong></td><td>Count over 30 sec, double it. Under 165 spm &rarr; target +10%. Cuts patellofemoral force ~14%</td></tr>
-      <tr><td><strong>Load</strong></td><td>Not settling? Drop the abduction machine and ease the leg press depth for 2 weeks</td></tr>
-      <tr><td><strong>Spikes</strong></td><td>One run a week is already the right response</td></tr>
-    </tbody>
-  </table>
-  <div class="callout warn">
-    <p><strong>See a physio if:</strong> sharp rather than achy &middot; one specific point &middot; swelling &middot; still there 2 weeks after these changes &middot; present when walking.</p>
-  </div>
+  <h3>Zone 2 &mdash; 45&ndash;50 min</h3>
+  <p>Cross trainer, incline treadmill walk (12&ndash;15%, 5&ndash;6 km/h), or bike. Conversational &mdash; full sentences, no gasping.</p>
 </section>
 
 <section id="macros">
-  <h2><span class="n">08</span> Calories and macros</h2>
+  <h2><span class="n">05</span> Your numbers</h2>
+  <p class="lede">Everything below is worked from these five fields. Change them and the whole page updates. Saved to your device like your weights.</p>
+
+  <div class="card">
+    <div class="ex"><div class="exi"><span class="exn">Sex</span></div>
+      <div class="exf"><select id="i-sex" style="width:130px;padding:7px 6px;font-family:var(--mono);font-size:0.88rem;color:var(--ink);background:var(--field);border:1px solid var(--rule);border-radius:7px"><option value="m">Male</option><option value="f">Female</option></select></div></div>
+    <div class="ex"><div class="exi"><span class="exn">Age</span><span class="exp">years</span></div>
+      <div class="exf"><input id="i-age" inputmode="numeric" placeholder="22"></div></div>
+    <div class="ex"><div class="exi"><span class="exn">Height</span><span class="exp">cm &mdash; 6&prime;1&Prime; = 185</span></div>
+      <div class="exf"><input id="i-ht" inputmode="numeric" placeholder="185"></div></div>
+    <div class="ex"><div class="exi"><span class="exn">Bodyweight</span><span class="exp">kg</span></div>
+      <div class="exf"><input id="i-wt" inputmode="decimal" placeholder="82.5"></div></div>
+    <div class="ex"><div class="exi"><span class="exn">Step floor</span><span class="exp">your bad-day minimum, not your best</span></div>
+      <div class="exf"><input id="i-steps" inputmode="numeric" placeholder="8000"></div></div>
+    <div class="ex" style="border-bottom:0"><div class="exi"><span class="exn">Phase</span></div>
+      <div class="exf"><select id="i-phase" style="width:130px;padding:7px 6px;font-family:var(--mono);font-size:0.88rem;color:var(--ink);background:var(--field);border:1px solid var(--rule);border-radius:7px"><option value="cut">Cut</option><option value="maintain">Maintain</option><option value="gain">Gain</option></select></div></div>
+  </div>
+
+  <h3>Targets</h3>
   <table>
     <tbody>
-      <tr><td>Calories</td><td class="num">2,300</td></tr>
-      <tr><td>Protein</td><td class="num">180 g</td></tr>
-      <tr><td>Fat</td><td class="num">70 g</td></tr>
-      <tr><td>Carbs</td><td class="num">235 g</td></tr>
+      <tr><td>Maintenance</td><td class="num" id="t-maint">&mdash;</td></tr>
+      <tr class="total"><td>Daily calories</td><td class="num" id="t-kcal">&mdash;</td></tr>
+      <tr><td>Protein</td><td class="num" id="t-pro">&mdash;</td></tr>
+      <tr><td>Fat</td><td class="num" id="t-fat">&mdash;</td></tr>
+      <tr><td>Carbs</td><td class="num" id="t-carb">&mdash;</td></tr>
       <tr><td>Fibre</td><td class="num">30 g</td></tr>
+      <tr><td>Expected rate</td><td class="num" id="t-rate">&mdash;</td></tr>
     </tbody>
   </table>
-  <p>Fat at 70 g is 0.85 g/kg. <strong>Don&rsquo;t let it drift below 0.8</strong> &mdash; hormones and fat-soluble vitamin absorption.</p>
+  <p class="note" id="t-warn"></p>
+  <p class="note">Protein 2.2 g/kg, fat 0.85 g/kg, carbs take the rest. Maintenance is built from BMR plus training, cardio and your <em>step floor</em>, then cut by 7% &mdash; adding activity components up systematically overestimates. Treat it as a starting hypothesis: eat the maintenance figure for a week, weigh daily fasted, and adjust from the scale rather than the arithmetic.</p>
   <p><strong>Peri-workout:</strong> 40&ndash;60 g carbs + 30&ndash;40 g protein, 1&ndash;2 h pre-training.</p>
 </section>
 
 <section id="activity">
-  <h2><span class="n">09</span> Daily activity target</h2>
+  <h2><span class="n">06</span> Daily activity target</h2>
   <p class="lede">The 2,300 kcal target assumes this much activity. Hit it and the deficit is real.</p>
   <h3>Baseline active kcal</h3>
   <table>
@@ -526,10 +452,10 @@ footer{margin-top:38px;padding-top:16px;border-top:1px solid var(--rule);
     <tbody>
       <tr><td>Lifting, 7&times; / week</td><td class="num">~220</td></tr>
       <tr><td>Cardio, 3 per block</td><td class="num">~190</td></tr>
-      <tr><td>Steps at 8k</td><td class="num">~280</td></tr>
+      <tr><td>Steps at your floor</td><td class="num" id="t-stepkcal">&mdash;</td></tr>
       <tr><td>Other daily movement</td><td class="num">~100</td></tr>
       <tr><td>Component total</td><td class="num">~790</td></tr>
-      <tr class="total"><td>Working baseline</td><td class="num">~700</td></tr>
+      <tr class="total"><td>Working baseline</td><td class="num" id="t-active">&mdash;</td></tr>
     </tbody>
   </table>
   <p class="note">The working figure sits below the component total on purpose &mdash; same 10% haircut as the calorie estimate.</p>
@@ -547,24 +473,14 @@ footer{margin-top:38px;padding-top:16px;border-top:1px solid var(--rule);
     <li><strong>10&ndash;12k is the target.</strong> Everything above 8k is free deficit.</li>
     <li>8k &asymp; 6.5 km &asymp; 75 min walking. 12k &asymp; 9.5 km &asymp; 115 min.</li>
   </ul>
-  <h3>If it stalls</h3>
-  <table>
-    <thead><tr><th>#</th><th>Change</th><th class="num">Effect</th></tr></thead>
-    <tbody>
-      <tr><td class="lead">1</td><td>Raise floor 8k &rarr; 10k</td><td class="num">+70</td></tr>
-      <tr><td class="lead">2</td><td>Raise floor 10k &rarr; 12k</td><td class="num">+70</td></tr>
-      <tr><td class="lead">3</td><td>Add 15 min to the Pull A zone 2</td><td class="num">+130</td></tr>
-      <tr><td class="lead">4</td><td>Drop calories to 2,150</td><td class="num">+150</td></tr>
-    </tbody>
-  </table>
-  <p class="note">Steps before calories. One change at a time, hold it 2 weeks.</p>
   <div class="callout warn">
     <p><strong>Watch check.</strong> If it reads much over ~700 active on a normal day, it&rsquo;s overestimating. Don&rsquo;t eat it back &mdash; use the fixed 2,300 and let the scale decide.</p>
   </div>
 </section>
 
 <section id="food">
-  <h2><span class="n">10</span> Food swaps</h2>
+  <h2><span class="n">07</span> Food swaps</h2>
+  <p class="lede">Worked from one real day of eating that was short on protein and fat. Use it as the pattern, not the prescription &mdash; the point is swapping low-satiety carbs for protein and whole-food fat without changing the calorie total.</p>
   <table>
     <thead><tr><th>Swap</th><th class="num">Effect</th></tr></thead>
     <tbody>
@@ -581,53 +497,8 @@ footer{margin-top:38px;padding-top:16px;border-top:1px solid var(--rule);
   </ul>
 </section>
 
-<section id="loop">
-  <h2><span class="n">11</span> The loop</h2>
-  <p class="lede">The 2,300 is a starting estimate, not a fact. This is how it corrects itself.</p>
-
-  <h3>Weekly check</h3>
-  <table>
-    <tbody>
-      <tr><td>Weigh</td><td>Daily, fasted, post-toilet. Read the 7-day average only</td></tr>
-      <tr><td>Week 1</td><td>Not data. Glycogen and water, not fat</td></tr>
-      <tr><td>End of week 3</td><td>Back-calculate from weeks 2&ndash;3, make <strong>one</strong> change</td></tr>
-      <tr><td>Then</td><td>Hold 2&ndash;3 weeks before touching it again</td></tr>
-      <tr><td>Formula</td><td>TDEE = intake &minus; (weekly kg change &times; 7700 &divide; 7)</td></tr>
-    </tbody>
-  </table>
-
-  <h3>Adjustments</h3>
-  <table>
-    <thead><tr><th>Situation</th><th>Action</th></tr></thead>
-    <tbody>
-      <tr><td>Flat 2 weeks</td><td>&minus;150 kcal from carbs <em>or</em> +1,500 steps. Not both</td></tr>
-      <tr><td>Losing &gt;0.6 kg/wk for 2 weeks</td><td><strong>+150 kcal.</strong> Too fast costs lean mass</td></tr>
-      <tr><td>Stalled at 2,050 kcal</td><td>Diet break, not a bigger deficit</td></tr>
-    </tbody>
-  </table>
-
-  <h3>Calendar</h3>
-  <table>
-    <thead><tr><th>When</th><th>What</th></tr></thead>
-    <tbody>
-      <tr><td>Every 5 weeks</td><td>Diet break &mdash; 7 days at 2,800 kcal, extra from carbs. Training unchanged</td></tr>
-      <tr><td>Weeks 7 and 13</td><td>Deload</td></tr>
-      <tr><td>Weeks 1, 6, 12</td><td>5k test</td></tr>
-      <tr><td>After the cut</td><td>Reverse 4 weeks to ~2,900, then gain at 3,100&ndash;3,200 (+0.25 kg/wk)</td></tr>
-    </tbody>
-  </table>
-
-  <h3>Also track</h3>
-  <p>Waist at the navel weekly &middot; photos fortnightly &middot; resting HR daily &middot; cadence every run.</p>
-
-  <div class="callout">
-    <p><strong>8+ hours sleep.</strong> At seven training days in a deficit it is the only recovery mechanism you haven&rsquo;t spent &mdash; a bigger lever than any exercise choice in here. Last caffeine by 2pm.</p>
-    <p><strong>Stop at 10&ndash;12%.</strong> Below that, training quality collapses and the gaining phase is where the muscle actually gets built.</p>
-  </div>
-</section>
-
 <section id="data">
-  <h2><span class="n">12</span> Your saved weights</h2>
+  <h2><span class="n">08</span> Your saved weights</h2>
   <p class="lede">Weights save to this device as you type. They are <em>not</em> shared between your phone and PC, and clearing website data will erase them. <strong>Copy restore link</strong> gives you a web address with your numbers baked in &mdash; message it to yourself and opening it restores everything, on any device.</p>
   <div class="bar">
     <button id="btn-backup">Back up</button>
@@ -651,7 +522,7 @@ footer{margin-top:38px;padding-top:16px;border-top:1px solid var(--rule);
 
 </main>
 
-<footer>Installed from your home screen, this works offline and remembers your weights. Always open it from the home-screen icon &mdash; Safari keeps separate storage. <span style="opacity:.6">build 2026-07-30d</span></footer>
+<footer>Installed from your home screen, this works offline and remembers your weights. Always open it from the home-screen icon &mdash; Safari keeps separate storage. <span style="opacity:.6">build 2026-07-30g</span></footer>
 
 </div>
 <div id="saved" role="status" aria-live="polite">Saved</div>
@@ -685,6 +556,84 @@ footer{margin-top:38px;padding-top:16px;border-top:1px solid var(--rule);
   inputs.forEach(function(i){ i.addEventListener('input',save); i.addEventListener('change',save); });
   load();
 
+  // ---------- personal numbers ----------
+  var F = ['i-sex','i-age','i-ht','i-wt','i-steps','i-phase'].map(function(id){ return document.getElementById(id); });
+  function el(id){ return document.getElementById(id); }
+  function num(v,d){ v = parseFloat(v); return (isFinite(v) && v > 0) ? v : d; }
+  function kcal(n){ return Math.round(n/10)*10; }
+
+  function calc(){
+    var sex = el('i-sex').value,
+        age = num(el('i-age').value, 22),
+        ht  = num(el('i-ht').value, 185),
+        wt  = num(el('i-wt').value, 82.5),
+        st  = num(el('i-steps').value, 8000),
+        ph  = el('i-phase').value;
+
+    var bmr = 10*wt + 6.25*ht - 5*age + (sex === 'm' ? 5 : -161);
+    var stepK = Math.round(st * 0.00042 * wt);      // net walking cost
+    var active = 300 + 175 + stepK + 100;            // lifting + cardio + steps + other NEAT
+    var maint  = kcal(((bmr + active) / 0.9) * 0.93); // TEF, then a 7% haircut
+
+    var delta = ph === 'cut' ? -500 : (ph === 'gain' ? 350 : 0);
+    var target = kcal(maint + delta);
+    var floor  = Math.round(bmr * 1.15);
+    var clamped = target < floor;
+    if (clamped) target = kcal(floor);
+
+    var pro = Math.round((ph === 'gain' ? 1.8 : 2.2) * wt);
+    var fat = Math.round(0.85 * wt);
+    var carb = Math.max(50, Math.round((target - pro*4 - fat*9) / 4));
+    var rate = (target - maint) / 7700 * 7;
+
+    el('t-maint').textContent = maint.toLocaleString() + ' kcal';
+    el('t-kcal').textContent  = target.toLocaleString() + ' kcal';
+    el('t-pro').textContent   = pro + ' g';
+    el('t-fat').textContent   = fat + ' g';
+    el('t-carb').textContent  = carb + ' g';
+    el('t-rate').textContent  = (rate === 0 ? 'hold' : (rate > 0 ? '+' : '') + rate.toFixed(2) + ' kg/wk');
+    el('t-warn').textContent  = clamped
+      ? 'Deficit clamped — a full 500 would put you too low for your size. Raise your step floor or accept slower loss.'
+      : '';
+
+    el('t-active').textContent   = '~' + Math.round(active/10)*10;
+    el('t-stepkcal').textContent = '~' + stepK;
+
+    el('o-kcal').textContent  = target.toLocaleString();
+    el('o-pro').textContent   = pro + ' g';
+    el('o-fat').textContent   = fat + ' g';
+    el('o-carb').textContent  = carb + ' g';
+    el('o-steps').textContent = (st/1000) + 'k floor';
+    el('o-rate').textContent  = (rate === 0 ? 'hold' : rate.toFixed(2) + ' kg/wk');
+    el('o-sub').textContent   = wt + ' kg  ·  ' + (ph === 'cut' ? 'cutting' : ph === 'gain' ? 'gaining' : 'maintaining')
+                              + '  ·  ' + target.toLocaleString() + ' kcal';
+  }
+
+  F.forEach(function(f){
+    f.addEventListener('input', function(){ calc(); saveNums(); });
+    f.addEventListener('change', function(){ calc(); saveNums(); });
+  });
+
+  var nt;
+  function saveNums(){
+    clearTimeout(nt);
+    nt = setTimeout(function(){
+      var d = read();
+      F.forEach(function(f){ d['n-' + f.id] = f.value; });
+      flash(write(d) ? 'Saved' : 'Storage blocked — use Back up');
+    }, 350);
+  }
+  (function loadNums(){
+    var d = read();
+    F.forEach(function(f){ if (d['n-' + f.id] != null) f.value = d['n-' + f.id]; });
+    calc();
+  })();
+  function loadNumsAgain(){
+    var d = read();
+    F.forEach(function(f){ if (d['n-' + f.id] != null) f.value = d['n-' + f.id]; });
+    calc();
+  }
+
   // ask the browser not to evict this data
   if(navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(function(){});
 
@@ -695,7 +644,7 @@ footer{margin-top:38px;padding-top:16px;border-top:1px solid var(--rule);
   if(location.hash.indexOf('#d=')===0){
     var incoming=dec(location.hash.slice(3));
     if(incoming && typeof incoming==='object'){
-      write(incoming); load(); flash('Restored from link');
+      write(incoming); load(); loadNumsAgain(); flash('Restored from link');
       ok(function(){ history.replaceState(null,'',location.pathname+location.search); });
     }
   }
@@ -717,7 +666,7 @@ footer{margin-top:38px;padding-top:16px;border-top:1px solid var(--rule);
   document.getElementById('btn-apply').onclick=function(){
     var d=ok(function(){ return JSON.parse(txt.value); },null);
     if(!d||typeof d!=='object'){ flash('Code not recognised'); return; }
-    write(d); load(); io.classList.add('hidden'); flash('Restored');
+    write(d); load(); loadNumsAgain(); io.classList.add('hidden'); flash('Restored');
   };
   document.getElementById('btn-clear').onclick=function(){
     if(!confirm('Clear every saved weight and rep? This cannot be undone.')) return;
