@@ -172,11 +172,12 @@ footer{margin-top:38px;padding-top:16px;border-top:1px solid var(--rule);
 <section id="split">
   <h2><span class="n">01</span> Split</h2>
   <p>Rolling 6-session block. No reset day &mdash; day 7 is just the next session.</p>
-  <div class="flow">Lower A &rarr; Upper A &rarr; Lower B &rarr; Upper B &rarr; Lower C &rarr; Upper C &rarr; repeat</div>
+  <div class="flow">Push A &rarr; Pull A &rarr; Legs A &rarr; Push B &rarr; Pull B &rarr; Legs B &rarr; repeat</div>
   <ul>
-    <li>Each muscle: ~3.5&times; / week</li>
-    <li>Per session: 2&ndash;5 sets per muscle</li>
-    <li>Per week: 12&ndash;15 direct sets per muscle</li>
+    <li>Each muscle: ~2.3&times; / week &mdash; above the 2&times; threshold, which is all the data supports</li>
+    <li>Per session: 5&ndash;8 sets per muscle, well under the ~11 ceiling</li>
+    <li>Per week: 13&ndash;18 direct sets per muscle</li>
+    <li>Six exercises a session, every session</li>
   </ul>
 </section>
 
@@ -184,193 +185,185 @@ footer{margin-top:38px;padding-top:16px;border-top:1px solid var(--rule);
   <h2><span class="n">02</span> Sessions</h2>
   <p class="lede"><strong>RIR</strong> = reps left in the tank. Tuned for hypertrophy, so compounds sit in the 6&ndash;12 range at 1&ndash;2 RIR rather than heavy triples &mdash; same growth, far less joint and systemic cost at seven sessions a week. Rest 2.5&ndash;3 min on the first two exercises, 90 sec after. Warm up the first lift with 2&ndash;3 ramping sets to your working weight; accessories need none. Type your working weight and last reps into each row &mdash; they save automatically.</p>
   <div class="card">
-    <h3>Lower A &mdash; squat</h3>
-    <div class="exhead"><span>kg</span><span>reps</span></div>
-    <div class="ex">
-      <div class="exi"><span class="exn">Back squat</span><span class="exp">3 &times; 6&ndash;10 &middot; RIR 1&ndash;2</span></div>
-      <div class="exf"><input data-k="la1-w" inputmode="decimal" placeholder="kg" aria-label="Back squat weight"><input data-k="la1-r" inputmode="numeric" placeholder="reps" aria-label="Back squat reps"></div>
-    </div>
-    <div class="ex">
-      <div class="exi"><span class="exn">Lying leg curl</span><span class="exp">2 &times; 8&ndash;10 &middot; RIR 1</span></div>
-      <div class="exf"><input data-k="la2-w" inputmode="decimal" placeholder="kg" aria-label="Lying leg curl weight"><input data-k="la2-r" inputmode="numeric" placeholder="reps" aria-label="Lying leg curl reps"></div>
-    </div>
-    <div class="ex">
-      <div class="exi"><span class="exn">Leg press (deep)</span><span class="exp">2 &times; 8&ndash;12 &middot; RIR 1</span></div>
-      <div class="exf"><input data-k="la3-w" inputmode="decimal" placeholder="kg" aria-label="Leg press (deep) weight"><input data-k="la3-r" inputmode="numeric" placeholder="reps" aria-label="Leg press (deep) reps"></div>
-    </div>
-    <div class="ex">
-      <div class="exi"><span class="exn">Leg press calf raise</span><span class="exp">3 &times; 8&ndash;12 &middot; RIR 0&ndash;1</span></div>
-      <div class="exf"><input data-k="la4-w" inputmode="decimal" placeholder="kg" aria-label="Leg press calf raise weight"><input data-k="la4-r" inputmode="numeric" placeholder="reps" aria-label="Leg press calf raise reps"></div>
-    </div>
-    <div class="ex">
-      <div class="exi"><span class="exn">Weighted decline sit-up</span><span class="exp">2 &times; 10&ndash;15 &middot; RIR 1</span></div>
-      <div class="exf"><input data-k="la5-w" inputmode="decimal" placeholder="kg" aria-label="Weighted decline sit-up weight"><input data-k="la5-r" inputmode="numeric" placeholder="reps" aria-label="Weighted decline sit-up reps"></div>
-    </div>
-    <p class="note">No seated curl at your gym, so the RDLs in Lower B are the only long-muscle-length hamstring work in the programme. Don&rsquo;t drop them.</p>
-  </div>
-  <div class="card">
-    <h3>Upper A &mdash; horizontal push</h3>
-    <span class="tag">+ Bike intervals &middot; 30 min</span>
-    <div class="exhead"><span>kg</span><span>reps</span></div>
-    <div class="ex">
-      <div class="exi"><span class="exn">Flat barbell bench</span><span class="exp">3 &times; 6&ndash;10 &middot; RIR 1&ndash;2</span></div>
-      <div class="exf"><input data-k="ua1-w" inputmode="decimal" placeholder="kg" aria-label="Flat barbell bench weight"><input data-k="ua1-r" inputmode="numeric" placeholder="reps" aria-label="Flat barbell bench reps"></div>
-    </div>
-    <div class="ex">
-      <div class="exi"><span class="exn">Chest-supported row</span><span class="exp">3 &times; 8&ndash;10 &middot; RIR 1</span></div>
-      <div class="exf"><input data-k="ua2-w" inputmode="decimal" placeholder="kg" aria-label="Chest-supported row weight"><input data-k="ua2-r" inputmode="numeric" placeholder="reps" aria-label="Chest-supported row reps"></div>
-    </div>
-    <div class="ex">
-      <div class="exi"><span class="exn">Incline DB press</span><span class="exp">2 &times; 8&ndash;10 &middot; RIR 1</span></div>
-      <div class="exf"><input data-k="ua3-w" inputmode="decimal" placeholder="kg" aria-label="Incline DB press weight"><input data-k="ua3-r" inputmode="numeric" placeholder="reps" aria-label="Incline DB press reps"></div>
-    </div>
-    <div class="ex">
-      <div class="exi"><span class="exn">Lat pulldown, wide</span><span class="exp">2 &times; 8&ndash;12 &middot; RIR 1</span></div>
-      <div class="exf"><input data-k="ua4-w" inputmode="decimal" placeholder="kg" aria-label="Lat pulldown, wide weight"><input data-k="ua4-r" inputmode="numeric" placeholder="reps" aria-label="Lat pulldown, wide reps"></div>
-    </div>
-    <div class="ex">
-      <div class="exi"><span class="exn">Cable lateral raise</span><span class="exp">3 &times; 12&ndash;15 &middot; RIR 0&ndash;1</span></div>
-      <div class="exf"><input data-k="ua5-w" inputmode="decimal" placeholder="kg" aria-label="Cable lateral raise weight"><input data-k="ua5-r" inputmode="numeric" placeholder="reps" aria-label="Cable lateral raise reps"></div>
-    </div>
-    <div class="ex">
-      <div class="exi"><span class="exn">Rear delt cable flye</span><span class="exp">2 &times; 12&ndash;20 &middot; RIR 0&ndash;1</span></div>
-      <div class="exf"><input data-k="ua6-w" inputmode="decimal" placeholder="kg" aria-label="Rear delt cable flye weight"><input data-k="ua6-r" inputmode="numeric" placeholder="reps" aria-label="Rear delt cable flye reps"></div>
-    </div>
-    <div class="ex">
-      <div class="exi"><span class="exn">Overhead cable triceps ext</span><span class="exp">2 &times; 8&ndash;12 &middot; RIR 0&ndash;1</span></div>
-      <div class="exf"><input data-k="ua7-w" inputmode="decimal" placeholder="kg" aria-label="Overhead cable triceps ext weight"><input data-k="ua7-r" inputmode="numeric" placeholder="reps" aria-label="Overhead cable triceps ext reps"></div>
-    </div>
-    <div class="ex">
-      <div class="exi"><span class="exn">Incline DB curl</span><span class="exp">2 &times; 8&ndash;12 &middot; RIR 0&ndash;1</span></div>
-      <div class="exf"><input data-k="ua8-w" inputmode="decimal" placeholder="kg" aria-label="Incline DB curl weight"><input data-k="ua8-r" inputmode="numeric" placeholder="reps" aria-label="Incline DB curl reps"></div>
-    </div>
-    <p class="note">Overhead extension beats pushdowns for triceps. Incline curl beats standing for biceps. Both load the muscle at long lengths.</p>
-  </div>
-  <div class="card">
-    <h3>Lower B &mdash; hinge</h3>
-    <div class="exhead"><span>kg</span><span>reps</span></div>
-    <div class="ex">
-      <div class="exi"><span class="exn">DB Romanian deadlift</span><span class="exp">3 &times; 8&ndash;12 &middot; RIR 1&ndash;2</span></div>
-      <div class="exf"><input data-k="lb1-w" inputmode="decimal" placeholder="kg" aria-label="DB Romanian deadlift weight"><input data-k="lb1-r" inputmode="numeric" placeholder="reps" aria-label="DB Romanian deadlift reps"></div>
-    </div>
-    <div class="ex">
-      <div class="exi"><span class="exn">Hack squat</span><span class="exp">3 &times; 8&ndash;12 &middot; RIR 1</span></div>
-      <div class="exf"><input data-k="lb2-w" inputmode="decimal" placeholder="kg" aria-label="Hack squat weight"><input data-k="lb2-r" inputmode="numeric" placeholder="reps" aria-label="Hack squat reps"></div>
-    </div>
-    <div class="ex">
-      <div class="exi"><span class="exn">Lying leg curl</span><span class="exp">2 &times; 10&ndash;12 &middot; RIR 0&ndash;1</span></div>
-      <div class="exf"><input data-k="lb3-w" inputmode="decimal" placeholder="kg" aria-label="Lying leg curl weight"><input data-k="lb3-r" inputmode="numeric" placeholder="reps" aria-label="Lying leg curl reps"></div>
-    </div>
-    <div class="ex">
-      <div class="exi"><span class="exn">Seated or bent-knee calf raise</span><span class="exp">3 &times; 10&ndash;15 &middot; RIR 0&ndash;1</span></div>
-      <div class="exf"><input data-k="lb4-w" inputmode="decimal" placeholder="kg" aria-label="Seated calf raise weight"><input data-k="lb4-r" inputmode="numeric" placeholder="reps" aria-label="Seated calf raise reps"></div>
-    </div>
-    <div class="ex">
-      <div class="exi"><span class="exn">Hanging leg or knee raise</span><span class="exp">2 &times; 8&ndash;15 &middot; RIR 1</span></div>
-      <div class="exf"><input data-k="lb5-w" inputmode="decimal" placeholder="kg" aria-label="Hanging leg or knee raise weight"><input data-k="lb5-r" inputmode="numeric" placeholder="reps" aria-label="Hanging leg or knee raise reps"></div>
-    </div>
-    <p class="note">RDL: hips back, minimal knee bend, stop before your back rounds. The stretch is the point, not the depth. Bent knee here on purpose &mdash; the only way to load the soleus, which takes the highest forces of any muscle when you run. Seated machine if you have one, otherwise leg press calf raises with knees bent ~30&deg;. Your other two calf slots are straight-legged and hit the gastroc.</p>
-  </div>
-  <div class="card">
-    <h3>Upper B &mdash; vertical pull</h3>
+    <h3>Push A &mdash; chest focus</h3>
     <span class="tag">+ THE RUN &middot; ~5k</span>
     <div class="exhead"><span>kg</span><span>reps</span></div>
     <div class="ex">
-      <div class="exi"><span class="exn">Pull-ups</span><span class="exp">3 &times; AMRAP &middot; RIR 0&ndash;1</span></div>
-      <div class="exf"><input data-k="ub1-w" inputmode="decimal" placeholder="kg" aria-label="Pull-ups weight"><input data-k="ub1-r" inputmode="numeric" placeholder="reps" aria-label="Pull-ups reps"></div>
+      <div class="exi"><span class="exn">Flat barbell bench</span><span class="exp">3 &times; 6&ndash;10 &middot; RIR 1&ndash;2</span></div>
+      <div class="exf"><input data-k="pa1-w" inputmode="decimal" placeholder="kg" aria-label="Flat barbell bench weight"><input data-k="pa1-r" inputmode="numeric" placeholder="reps" aria-label="Flat barbell bench reps"></div>
     </div>
     <div class="ex">
-      <div class="exi"><span class="exn">Incline DB press</span><span class="exp">2 &times; 8&ndash;10 &middot; RIR 1&ndash;2</span></div>
-      <div class="exf"><input data-k="ub2-w" inputmode="decimal" placeholder="kg" aria-label="Incline DB press weight"><input data-k="ub2-r" inputmode="numeric" placeholder="reps" aria-label="Incline DB press reps"></div>
-    </div>
-    <div class="ex">
-      <div class="exi"><span class="exn">Single-arm cable row</span><span class="exp">2 &times; 10&ndash;12 &middot; RIR 1</span></div>
-      <div class="exf"><input data-k="ub3-w" inputmode="decimal" placeholder="kg" aria-label="Single-arm cable row weight"><input data-k="ub3-r" inputmode="numeric" placeholder="reps" aria-label="Single-arm cable row reps"></div>
+      <div class="exi"><span class="exn">Incline DB press</span><span class="exp">3 &times; 8&ndash;12 &middot; RIR 1</span></div>
+      <div class="exf"><input data-k="pa2-w" inputmode="decimal" placeholder="kg" aria-label="Incline DB press weight"><input data-k="pa2-r" inputmode="numeric" placeholder="reps" aria-label="Incline DB press reps"></div>
     </div>
     <div class="ex">
       <div class="exi"><span class="exn">Pec deck / cable flye</span><span class="exp">2 &times; 10&ndash;15 &middot; RIR 0&ndash;1</span></div>
-      <div class="exf"><input data-k="ub4-w" inputmode="decimal" placeholder="kg" aria-label="Pec deck / cable flye weight"><input data-k="ub4-r" inputmode="numeric" placeholder="reps" aria-label="Pec deck / cable flye reps"></div>
+      <div class="exf"><input data-k="pa3-w" inputmode="decimal" placeholder="kg" aria-label="Pec deck / cable flye weight"><input data-k="pa3-r" inputmode="numeric" placeholder="reps" aria-label="Pec deck / cable flye reps"></div>
     </div>
     <div class="ex">
-      <div class="exi"><span class="exn">Rear delt cable flye</span><span class="exp">2 &times; 12&ndash;20 &middot; RIR 0&ndash;1</span></div>
-      <div class="exf"><input data-k="ub5-w" inputmode="decimal" placeholder="kg" aria-label="Rear delt cable flye weight"><input data-k="ub5-r" inputmode="numeric" placeholder="reps" aria-label="Rear delt cable flye reps"></div>
+      <div class="exi"><span class="exn">Cable or DB lateral raise</span><span class="exp">4 &times; 12&ndash;20 &middot; RIR 0&ndash;1</span></div>
+      <div class="exf"><input data-k="pa4-w" inputmode="decimal" placeholder="kg" aria-label="Lateral raise weight"><input data-k="pa4-r" inputmode="numeric" placeholder="reps" aria-label="Lateral raise reps"></div>
     </div>
     <div class="ex">
-      <div class="exi"><span class="exn">Cable lateral raise</span><span class="exp">2 &times; 12&ndash;15 &middot; RIR 0&ndash;1</span></div>
-      <div class="exf"><input data-k="ub6-w" inputmode="decimal" placeholder="kg" aria-label="Cable lateral raise weight"><input data-k="ub6-r" inputmode="numeric" placeholder="reps" aria-label="Cable lateral raise reps"></div>
+      <div class="exi"><span class="exn">Overhead cable triceps ext</span><span class="exp">3 &times; 8&ndash;12 &middot; RIR 0&ndash;1</span></div>
+      <div class="exf"><input data-k="pa5-w" inputmode="decimal" placeholder="kg" aria-label="Overhead cable triceps ext weight"><input data-k="pa5-r" inputmode="numeric" placeholder="reps" aria-label="Overhead cable triceps ext reps"></div>
     </div>
     <div class="ex">
       <div class="exi"><span class="exn">Cable pushdown</span><span class="exp">2 &times; 10&ndash;15 &middot; RIR 0&ndash;1</span></div>
-      <div class="exf"><input data-k="ub7-w" inputmode="decimal" placeholder="kg" aria-label="Cable pushdown weight"><input data-k="ub7-r" inputmode="numeric" placeholder="reps" aria-label="Cable pushdown reps"></div>
+      <div class="exf"><input data-k="pa6-w" inputmode="decimal" placeholder="kg" aria-label="Cable pushdown weight"><input data-k="pa6-r" inputmode="numeric" placeholder="reps" aria-label="Cable pushdown reps"></div>
     </div>
-    <p class="note">Past 12 clean pull-ups &rarr; add load or slow the eccentric. Don&rsquo;t chase 20-rep sets.</p>
+    <p class="note">The run lands here because tomorrow is Pull. Impact damage never touches a leg session &mdash; the single biggest gain from this split.</p>
   </div>
   <div class="card">
-    <h3>Lower C &mdash; quads, lighter</h3>
-    <div class="exhead"><span>kg</span><span>reps</span></div>
-    <div class="ex">
-      <div class="exi"><span class="exn">Leg press (deep)</span><span class="exp">2 &times; 10&ndash;12 &middot; RIR 1</span></div>
-      <div class="exf"><input data-k="lc1-w" inputmode="decimal" placeholder="kg" aria-label="Leg press (deep) weight"><input data-k="lc1-r" inputmode="numeric" placeholder="reps" aria-label="Leg press (deep) reps"></div>
-    </div>
-    <div class="ex">
-      <div class="exi"><span class="exn">Lying leg curl</span><span class="exp">2 &times; 10&ndash;12 &middot; RIR 0&ndash;1</span></div>
-      <div class="exf"><input data-k="lc2-w" inputmode="decimal" placeholder="kg" aria-label="Lying leg curl weight"><input data-k="lc2-r" inputmode="numeric" placeholder="reps" aria-label="Lying leg curl reps"></div>
-    </div>
-    <div class="ex">
-      <div class="exi"><span class="exn">Leg extension</span><span class="exp">2 &times; 12&ndash;15 &middot; RIR 0&ndash;1</span></div>
-      <div class="exf"><input data-k="lc3-w" inputmode="decimal" placeholder="kg" aria-label="Leg extension weight"><input data-k="lc3-r" inputmode="numeric" placeholder="reps" aria-label="Leg extension reps"></div>
-    </div>
-    <div class="ex">
-      <div class="exi"><span class="exn">Barbell or DB lunge (in rack)</span><span class="exp">2 &times; 10&ndash;12 / leg &middot; RIR 1&ndash;2</span></div>
-      <div class="exf"><input data-k="lc4-w" inputmode="decimal" placeholder="kg" aria-label="Barbell or DB lunge (in rack) weight"><input data-k="lc4-r" inputmode="numeric" placeholder="reps" aria-label="Barbell or DB lunge (in rack) reps"></div>
-    </div>
-    <div class="ex">
-      <div class="exi"><span class="exn">Leg press calf raise</span><span class="exp">2 &times; 12&ndash;15 &middot; RIR 0&ndash;1</span></div>
-      <div class="exf"><input data-k="lc5-w" inputmode="decimal" placeholder="kg" aria-label="Leg press calf raise weight"><input data-k="lc5-r" inputmode="numeric" placeholder="reps" aria-label="Leg press calf raise reps"></div>
-    </div>
-    <div class="ex">
-      <div class="exi"><span class="exn">Hip abduction (machine or cable)</span><span class="exp">2 &times; 12&ndash;20 &middot; RIR 0&ndash;1</span></div>
-      <div class="exf"><input data-k="lc6-w" inputmode="decimal" placeholder="kg" aria-label="Hip abduction weight"><input data-k="lc6-r" inputmode="numeric" placeholder="reps" aria-label="Hip abduction reps"></div>
-    </div>
-    <div class="ex">
-      <div class="exi"><span class="exn">Tibialis raise <span style="color:var(--muted);font-size:0.8em">optional</span></span><span class="exp">2 &times; 15&ndash;20 &middot; bodyweight, back to a wall</span></div>
-      <div class="exf"><input data-k="lc7-w" inputmode="decimal" placeholder="kg" aria-label="Tibialis raise weight"><input data-k="lc7-r" inputmode="numeric" placeholder="reps" aria-label="Tibialis raise reps"></div>
-    </div>
-    <p class="note">Lightest session. Lunges are the first thing to cut when you&rsquo;re fatigued. Abduction is the one plane the rest of the programme misses, and glute medius weakness is linked to dynamic knee valgus &mdash; keep it in while the knee is grumbling. Tibialis raises are 60 seconds of insurance for a runner &mdash; drop them first if the session drags.</p>
-  </div>
-  <div class="card">
-    <h3>Upper C &mdash; delts and arms</h3>
+    <h3>Pull A &mdash; vertical focus</h3>
     <span class="tag">+ Zone 2, 45&ndash;50 min &middot; cross trainer or incline walk</span>
     <div class="exhead"><span>kg</span><span>reps</span></div>
     <div class="ex">
+      <div class="exi"><span class="exn">Pull-ups</span><span class="exp">3 &times; AMRAP &middot; RIR 0&ndash;1</span></div>
+      <div class="exf"><input data-k="ra1-w" inputmode="decimal" placeholder="kg" aria-label="Pull-ups weight"><input data-k="ra1-r" inputmode="numeric" placeholder="reps" aria-label="Pull-ups reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Chest-supported row</span><span class="exp">3 &times; 8&ndash;12 &middot; RIR 1</span></div>
+      <div class="exf"><input data-k="ra2-w" inputmode="decimal" placeholder="kg" aria-label="Chest-supported row weight"><input data-k="ra2-r" inputmode="numeric" placeholder="reps" aria-label="Chest-supported row reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Lat pulldown, neutral close</span><span class="exp">2 &times; 10&ndash;12 &middot; RIR 1</span></div>
+      <div class="exf"><input data-k="ra3-w" inputmode="decimal" placeholder="kg" aria-label="Lat pulldown, neutral close weight"><input data-k="ra3-r" inputmode="numeric" placeholder="reps" aria-label="Lat pulldown, neutral close reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Rear delt cable flye</span><span class="exp">4 &times; 12&ndash;20 &middot; RIR 0&ndash;1</span></div>
+      <div class="exf"><input data-k="ra4-w" inputmode="decimal" placeholder="kg" aria-label="Rear delt cable flye weight"><input data-k="ra4-r" inputmode="numeric" placeholder="reps" aria-label="Rear delt cable flye reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Incline DB curl</span><span class="exp">3 &times; 8&ndash;12 &middot; RIR 0&ndash;1</span></div>
+      <div class="exf"><input data-k="ra5-w" inputmode="decimal" placeholder="kg" aria-label="Incline DB curl weight"><input data-k="ra5-r" inputmode="numeric" placeholder="reps" aria-label="Incline DB curl reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Cable curl (elbows back)</span><span class="exp">2 &times; 10&ndash;15 &middot; RIR 0&ndash;1</span></div>
+      <div class="exf"><input data-k="ra6-w" inputmode="decimal" placeholder="kg" aria-label="Cable curl (elbows back) weight"><input data-k="ra6-r" inputmode="numeric" placeholder="reps" aria-label="Cable curl (elbows back) reps"></div>
+    </div>
+    <p class="note">Softest cardio here, because tomorrow is Legs A and your heaviest squats. If the squat slides, shorten this zone 2 before touching anything in the gym.</p>
+  </div>
+  <div class="card">
+    <h3>Legs A &mdash; squat focus</h3>
+    <div class="exhead"><span>kg</span><span>reps</span></div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Back squat</span><span class="exp">3 &times; 6&ndash;10 &middot; RIR 1&ndash;2</span></div>
+      <div class="exf"><input data-k="ga1-w" inputmode="decimal" placeholder="kg" aria-label="Back squat weight"><input data-k="ga1-r" inputmode="numeric" placeholder="reps" aria-label="Back squat reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Lying leg curl</span><span class="exp">3 &times; 8&ndash;12 &middot; RIR 1</span></div>
+      <div class="exf"><input data-k="ga2-w" inputmode="decimal" placeholder="kg" aria-label="Lying leg curl weight"><input data-k="ga2-r" inputmode="numeric" placeholder="reps" aria-label="Lying leg curl reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Leg press (deep)</span><span class="exp">3 &times; 10&ndash;12 &middot; RIR 1</span></div>
+      <div class="exf"><input data-k="ga3-w" inputmode="decimal" placeholder="kg" aria-label="Leg press (deep) weight"><input data-k="ga3-r" inputmode="numeric" placeholder="reps" aria-label="Leg press (deep) reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Seated or bent-knee calf raise</span><span class="exp">4 &times; 10&ndash;15 &middot; RIR 0&ndash;1</span></div>
+      <div class="exf"><input data-k="ga4-w" inputmode="decimal" placeholder="kg" aria-label="Seated or bent-knee calf raise weight"><input data-k="ga4-r" inputmode="numeric" placeholder="reps" aria-label="Seated or bent-knee calf raise reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Hip abduction (machine or cable)</span><span class="exp">2 &times; 12&ndash;20 &middot; RIR 0&ndash;1</span></div>
+      <div class="exf"><input data-k="ga5-w" inputmode="decimal" placeholder="kg" aria-label="Hip abduction (machine or cable) weight"><input data-k="ga5-r" inputmode="numeric" placeholder="reps" aria-label="Hip abduction (machine or cable) reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Weighted decline sit-up</span><span class="exp">2 &times; 10&ndash;15 &middot; RIR 1</span></div>
+      <div class="exf"><input data-k="ga6-w" inputmode="decimal" placeholder="kg" aria-label="Weighted decline sit-up weight"><input data-k="ga6-r" inputmode="numeric" placeholder="reps" aria-label="Weighted decline sit-up reps"></div>
+    </div>
+    <p class="note">Bent-knee calf raise is deliberate &mdash; the only way to load the soleus, which takes the highest forces of any muscle when you run.</p>
+  </div>
+  <div class="card">
+    <h3>Push B &mdash; shoulder focus</h3>
+    <span class="tag">+ Bike intervals &middot; 4 &times; 4 min &middot; ~35 min</span>
+    <div class="exhead"><span>kg</span><span>reps</span></div>
+    <div class="ex">
       <div class="exi"><span class="exn">Seated DB shoulder press</span><span class="exp">3 &times; 8&ndash;12 &middot; RIR 1</span></div>
-      <div class="exf"><input data-k="uc1-w" inputmode="decimal" placeholder="kg" aria-label="Seated DB shoulder press weight"><input data-k="uc1-r" inputmode="numeric" placeholder="reps" aria-label="Seated DB shoulder press reps"></div>
+      <div class="exf"><input data-k="pb1-w" inputmode="decimal" placeholder="kg" aria-label="Seated DB shoulder press weight"><input data-k="pb1-r" inputmode="numeric" placeholder="reps" aria-label="Seated DB shoulder press reps"></div>
     </div>
     <div class="ex">
-      <div class="exi"><span class="exn">Lat pulldown, neutral close</span><span class="exp">3 &times; 8&ndash;12 &middot; RIR 1</span></div>
-      <div class="exf"><input data-k="uc2-w" inputmode="decimal" placeholder="kg" aria-label="Lat pulldown, neutral close weight"><input data-k="uc2-r" inputmode="numeric" placeholder="reps" aria-label="Lat pulldown, neutral close reps"></div>
+      <div class="exi"><span class="exn">Incline DB press</span><span class="exp">3 &times; 8&ndash;12 &middot; RIR 1</span></div>
+      <div class="exf"><input data-k="pb2-w" inputmode="decimal" placeholder="kg" aria-label="Incline DB press weight"><input data-k="pb2-r" inputmode="numeric" placeholder="reps" aria-label="Incline DB press reps"></div>
     </div>
     <div class="ex">
-      <div class="exi"><span class="exn">Flat DB press</span><span class="exp">2 &times; 8&ndash;12 &middot; RIR 1</span></div>
-      <div class="exf"><input data-k="uc3-w" inputmode="decimal" placeholder="kg" aria-label="Flat DB press weight"><input data-k="uc3-r" inputmode="numeric" placeholder="reps" aria-label="Flat DB press reps"></div>
+      <div class="exi"><span class="exn">Flat DB press or machine press</span><span class="exp">2 &times; 10&ndash;12 &middot; RIR 1</span></div>
+      <div class="exf"><input data-k="pb3-w" inputmode="decimal" placeholder="kg" aria-label="Flat DB press or machine press weight"><input data-k="pb3-r" inputmode="numeric" placeholder="reps" aria-label="Flat DB press or machine press reps"></div>
     </div>
     <div class="ex">
-      <div class="exi"><span class="exn">Lateral raise</span><span class="exp">3 &times; 12&ndash;20 &middot; RIR 0&ndash;1</span></div>
-      <div class="exf"><input data-k="uc4-w" inputmode="decimal" placeholder="kg" aria-label="Lateral raise weight"><input data-k="uc4-r" inputmode="numeric" placeholder="reps" aria-label="Lateral raise reps"></div>
-    </div>
-    <div class="ex">
-      <div class="exi"><span class="exn">Rear delt flye</span><span class="exp">2 &times; 12&ndash;20 &middot; RIR 0&ndash;1</span></div>
-      <div class="exf"><input data-k="uc5-w" inputmode="decimal" placeholder="kg" aria-label="Rear delt flye weight"><input data-k="uc5-r" inputmode="numeric" placeholder="reps" aria-label="Rear delt flye reps"></div>
+      <div class="exi"><span class="exn">Cable or DB lateral raise</span><span class="exp">4 &times; 12&ndash;20 &middot; RIR 0&ndash;1</span></div>
+      <div class="exf"><input data-k="pb4-w" inputmode="decimal" placeholder="kg" aria-label="Lateral raise weight"><input data-k="pb4-r" inputmode="numeric" placeholder="reps" aria-label="Lateral raise reps"></div>
     </div>
     <div class="ex">
       <div class="exi"><span class="exn">Overhead EZ / DB extension</span><span class="exp">2 &times; 8&ndash;12 &middot; RIR 0&ndash;1</span></div>
-      <div class="exf"><input data-k="uc6-w" inputmode="decimal" placeholder="kg" aria-label="Overhead EZ / DB extension weight"><input data-k="uc6-r" inputmode="numeric" placeholder="reps" aria-label="Overhead EZ / DB extension reps"></div>
+      <div class="exf"><input data-k="pb5-w" inputmode="decimal" placeholder="kg" aria-label="Overhead EZ / DB extension weight"><input data-k="pb5-r" inputmode="numeric" placeholder="reps" aria-label="Overhead EZ / DB extension reps"></div>
     </div>
     <div class="ex">
-      <div class="exi"><span class="exn">Cable curl (elbows back)</span><span class="exp">2 &times; 8&ndash;12 &middot; RIR 0&ndash;1</span></div>
-      <div class="exf"><input data-k="uc7-w" inputmode="decimal" placeholder="kg" aria-label="Cable curl (elbows back) weight"><input data-k="uc7-r" inputmode="numeric" placeholder="reps" aria-label="Cable curl (elbows back) reps"></div>
+      <div class="exi"><span class="exn">Cable pushdown</span><span class="exp">2 &times; 10&ndash;15 &middot; RIR 0&ndash;1</span></div>
+      <div class="exf"><input data-k="pb6-w" inputmode="decimal" placeholder="kg" aria-label="Cable pushdown weight"><input data-k="pb6-r" inputmode="numeric" placeholder="reps" aria-label="Cable pushdown reps"></div>
     </div>
-    <p class="note">Shoulder press bothering you? Swap to a landmine press or neutral-grip machine. No meaningful loss.</p>
+    <p class="note">Intervals here for the same reason as the run &mdash; tomorrow is Pull. Shoulder press aggravating you? Landmine or neutral-grip machine, no loss.</p>
+  </div>
+  <div class="card">
+    <h3>Pull B &mdash; horizontal focus</h3>
+    <div class="exhead"><span>kg</span><span>reps</span></div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Chest-supported or T-bar row</span><span class="exp">3 &times; 8&ndash;12 &middot; RIR 1</span></div>
+      <div class="exf"><input data-k="rb1-w" inputmode="decimal" placeholder="kg" aria-label="Chest-supported or T-bar row weight"><input data-k="rb1-r" inputmode="numeric" placeholder="reps" aria-label="Chest-supported or T-bar row reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Lat pulldown, wide pronated</span><span class="exp">3 &times; 8&ndash;12 &middot; RIR 1</span></div>
+      <div class="exf"><input data-k="rb2-w" inputmode="decimal" placeholder="kg" aria-label="Lat pulldown, wide pronated weight"><input data-k="rb2-r" inputmode="numeric" placeholder="reps" aria-label="Lat pulldown, wide pronated reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Single-arm cable row</span><span class="exp">2 &times; 10&ndash;12 &middot; RIR 1</span></div>
+      <div class="exf"><input data-k="rb3-w" inputmode="decimal" placeholder="kg" aria-label="Single-arm cable row weight"><input data-k="rb3-r" inputmode="numeric" placeholder="reps" aria-label="Single-arm cable row reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Rear delt pec deck or cable flye</span><span class="exp">3 &times; 12&ndash;20 &middot; RIR 0&ndash;1</span></div>
+      <div class="exf"><input data-k="rb4-w" inputmode="decimal" placeholder="kg" aria-label="Rear delt pec deck weight"><input data-k="rb4-r" inputmode="numeric" placeholder="reps" aria-label="Rear delt pec deck reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Preacher or cable curl</span><span class="exp">2 &times; 8&ndash;12 &middot; RIR 0&ndash;1</span></div>
+      <div class="exf"><input data-k="rb5-w" inputmode="decimal" placeholder="kg" aria-label="Preacher or cable curl weight"><input data-k="rb5-r" inputmode="numeric" placeholder="reps" aria-label="Preacher or cable curl reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Hammer curl</span><span class="exp">2 &times; 10&ndash;12 &middot; RIR 0&ndash;1</span></div>
+      <div class="exf"><input data-k="rb6-w" inputmode="decimal" placeholder="kg" aria-label="Hammer curl weight"><input data-k="rb6-r" inputmode="numeric" placeholder="reps" aria-label="Hammer curl reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">DB shrug</span><span class="exp">2 &times; 10&ndash;15 &middot; RIR 0&ndash;1</span></div>
+      <div class="exf"><input data-k="rb7-w" inputmode="decimal" placeholder="kg" aria-label="Shrug weight"><input data-k="rb7-r" inputmode="numeric" placeholder="reps" aria-label="Shrug reps"></div>
+    </div>
+    <p class="note">Shrugs are here because rows and pulldowns hit mid and lower traps, not upper &mdash; the one visible muscle the split was missing. No cardio today &mdash; tomorrow is Legs B. An easy walk is fine, nothing structured.</p>
+  </div>
+  <div class="card">
+    <h3>Legs B &mdash; hinge focus</h3>
+    <div class="exhead"><span>kg</span><span>reps</span></div>
+    <div class="ex">
+      <div class="exi"><span class="exn">DB Romanian deadlift</span><span class="exp">3 &times; 8&ndash;12 &middot; RIR 1&ndash;2</span></div>
+      <div class="exf"><input data-k="gb1-w" inputmode="decimal" placeholder="kg" aria-label="DB Romanian deadlift weight"><input data-k="gb1-r" inputmode="numeric" placeholder="reps" aria-label="DB Romanian deadlift reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Hack squat</span><span class="exp">3 &times; 8&ndash;12 &middot; RIR 1</span></div>
+      <div class="exf"><input data-k="gb2-w" inputmode="decimal" placeholder="kg" aria-label="Hack squat weight"><input data-k="gb2-r" inputmode="numeric" placeholder="reps" aria-label="Hack squat reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Lying leg curl</span><span class="exp">3 &times; 10&ndash;12 &middot; RIR 0&ndash;1</span></div>
+      <div class="exf"><input data-k="gb3-w" inputmode="decimal" placeholder="kg" aria-label="Lying leg curl weight"><input data-k="gb3-r" inputmode="numeric" placeholder="reps" aria-label="Lying leg curl reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Leg extension</span><span class="exp">2 &times; 12&ndash;15 &middot; RIR 0&ndash;1</span></div>
+      <div class="exf"><input data-k="gb4-w" inputmode="decimal" placeholder="kg" aria-label="Leg extension weight"><input data-k="gb4-r" inputmode="numeric" placeholder="reps" aria-label="Leg extension reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Leg press calf raise</span><span class="exp">4 &times; 12&ndash;15 &middot; RIR 0&ndash;1</span></div>
+      <div class="exf"><input data-k="gb5-w" inputmode="decimal" placeholder="kg" aria-label="Leg press calf raise weight"><input data-k="gb5-r" inputmode="numeric" placeholder="reps" aria-label="Leg press calf raise reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Hanging leg or knee raise</span><span class="exp">2 &times; 8&ndash;15 &middot; RIR 1</span></div>
+      <div class="exf"><input data-k="gb6-w" inputmode="decimal" placeholder="kg" aria-label="Hanging leg or knee raise weight"><input data-k="gb6-r" inputmode="numeric" placeholder="reps" aria-label="Hanging leg or knee raise reps"></div>
+    </div>
+    <p class="note">RDL: hips back, minimal knee bend, stop before your back rounds. The stretch is the point, not the depth.</p>
   </div>
 </section>
 
@@ -379,19 +372,23 @@ footer{margin-top:38px;padding-top:16px;border-top:1px solid var(--rule);
   <table>
     <thead><tr><th>Muscle</th><th class="num">Sets / week</th></tr></thead>
     <tbody>
-      <tr><td>Quads</td><td class="num">14</td></tr>
-      <tr><td>Lats / upper back</td><td class="num">15</td></tr>
-      <tr><td>Chest</td><td class="num">13</td></tr>
+      <tr><td>Back / lats</td><td class="num">17</td></tr>
+      <tr><td>Chest</td><td class="num">15</td></tr>
+      <tr><td>Quads</td><td class="num">13</td></tr>
+      <tr><td>Triceps</td><td class="num">10.5</td></tr>
+      <tr><td>Biceps</td><td class="num">10.5</td></tr>
       <tr><td>Hamstrings</td><td class="num">10.5</td></tr>
       <tr><td>Side delts</td><td class="num">9.5</td></tr>
       <tr><td>Calves</td><td class="num">9.5</td></tr>
-      <tr><td>Rear delts</td><td class="num">7</td></tr>
-      <tr><td>Triceps</td><td class="num">7</td></tr>
-      <tr><td>Biceps</td><td class="num">7</td></tr>
-    </tbody>
+      <tr><td>Rear delts</td><td class="num">8</td></tr>
+      <tr><td>Upper traps</td><td class="num">2.3 direct</td></tr>
+      <tr><td>Abductors</td><td class="num">2.3 direct</td></tr>
+</tbody>
   </table>
-  <p class="note">Lower days have fewer exercises because the lower body has fewer separate targets (quads, hams, glutes, calves) while upper has seven. Per muscle, quads at 14 sets are the second-highest in the programme. Arms count direct sets only &mdash; 25+ pressing and pulling sets sit on top. Lagging at week 4? Add one set each to Upper A and Upper C. No more.</p>
-  <p class="note"><strong>Why volume is not higher.</strong> More sets do mean more growth, with no clear plateau in the meta-regressions &mdash; but that assumes you can recover from them. In a 500 kcal deficit at seven sessions a week you cannot, so the quality levers are doing the work instead: long muscle lengths, 1&ndash;2 RIR, 3.5&times; frequency. Push volume to 18&ndash;20 sets on your priority muscles in the gaining phase, not now.</p>
+  <p class="note">Lower days have fewer exercises because the lower body has fewer separate targets (quads, hams, glutes, calves) while upper has seven. Per muscle, quads at 14 sets are the second-highest in the programme. Arms count direct sets only &mdash; 25+ pressing and pulling sets sit on top. Lagging at week 4? Add one set each to Push A and Pull A. No more.</p>
+  <p class="note"><strong>Deliberately light, and why.</strong> Glutes get no direct work &mdash; squats, RDLs, hack squats and leg press cover hip extension adequately for a male physique. Forearms are covered by pull-ups, rows and heavy DB RDLs; if grip caps your RDL, use straps rather than adding grip work. Abductors and traps are at token volume because they are there for joint health and one visible gap, not for size. Nothing else is missing.</p>
+  <p class="note"><strong>Arms went up.</strong> They were the thinnest thing in the old split at 7 sets each, and they were trained last in an eight-exercise session, fatigued. On six-exercise push and pull days they get 10.5 sets and arrive with something left. That is the second real gain here.</p>
+  <p class="note"><strong>Why volume is not higher still.</strong> More sets do mean more growth, with no clear plateau in the meta-regressions &mdash; but that assumes you can recover from them. In a 500 kcal deficit at seven sessions a week you cannot, so the quality levers are doing the work instead: long muscle lengths, 1&ndash;2 RIR, 3.5&times; frequency. Push volume to 18&ndash;20 sets on your priority muscles in the gaining phase, not now.</p>
   <p class="note"><strong>Deliberately not programmed:</strong> forearms (covered by pull-ups, rows and heavy DB RDLs &mdash; if grip caps your RDL, use straps rather than adding grip work), direct glutes (squats, RDLs, hack and lunges are enough), neck, and rotator cuff. If the shoulder keeps complaining, 2 sets of cable external rotation a week is cheap insurance.</p>
 </section>
 
@@ -431,7 +428,7 @@ footer{margin-top:38px;padding-top:16px;border-top:1px solid var(--rule);
       <tr><td class="lead">3+</td><td>As above <strong>+ take the day off</strong></td></tr>
     </tbody>
   </table>
-  <p class="note">The 3-flag rule is a stop-loss, not a rest day. Expect to use it about twice in 12 weeks. Weekly use means drop Lower C from the rotation.</p>
+  <p class="note">The 3-flag rule is a stop-loss, not a rest day. Expect to use it about twice in 12 weeks. Weekly use means drop one cardio session, then trim Legs B.</p>
   <div class="callout">
     <p><strong>Deload &mdash; weeks 7 and 13.</strong> Half the sets, same loads, everything at 4 RIR, two easy low-impact sessions and no run. Still train all 7 days.</p>
   </div>
@@ -442,19 +439,20 @@ footer{margin-top:38px;padding-top:16px;border-top:1px solid var(--rule);
   <table>
     <thead><tr><th>Attached to</th><th>Session</th><th class="num">Time</th></tr></thead>
     <tbody>
-      <tr><td>Upper A</td><td>Bike intervals</td><td class="num">30 min</td></tr>
-      <tr><td>Upper B</td><td><strong>The run</strong>, ~5k</td><td class="num">&mdash;</td></tr>
-      <tr><td>Upper C</td><td>Zone 2, low-impact</td><td class="num">45&ndash;50 min</td></tr>
+      <tr><td>Push A</td><td><strong>The run</strong>, ~5k</td><td class="num">&mdash;</td></tr>
+      <tr><td>Pull A</td><td>Zone 2, low-impact</td><td class="num">45&ndash;50 min</td></tr>
+      <tr><td>Push B</td><td>Bike intervals, 4 &times; 4</td><td class="num">~35 min</td></tr>
     </tbody>
   </table>
-  <p class="note">Placement is ordered by what follows it, because lifting is the priority. Zone 2 is the softest session, so it sits before <strong>Lower A</strong> and your heavy squats. The run causes eccentric damage, so it sits before <strong>Lower C</strong>, the lightest leg day. Intervals cost metabolic fatigue but no muscle damage, so they take the middle slot before Lower B. If your squat starts sliding, shorten the zone 2 before you touch anything in the gym.</p>
+  <p class="note"><strong>This is the biggest structural gain over upper/lower.</strong> Both hard cardio sessions now sit the day before an upper session, so running and intervals never precede a leg day at all. Zone 2, the softest session you do, is the only one landing before legs. Under the old split the run had to precede a leg day &mdash; there was nowhere else to put it.</p>
   <h3>The run &mdash; alternate each block</h3>
   <ul>
     <li><strong>A:</strong> steady 5k, controlled. Don&rsquo;t race it.</li>
     <li><strong>B:</strong> 5 &times; 1 km at goal pace, 90 sec walk. Or 6 &times; 800 m.</li>
   </ul>
-  <h3>Bike intervals</h3>
-  <p>6 &times; 2 min hard / 2 min easy. Or 8 &times; 1 min / 90 sec. Build to 8 &times; 2 min.</p>
+  <h3>Bike intervals &mdash; the Norwegian 4 &times; 4</h3>
+  <p>10 min warm-up &middot; <strong>4 &times; 4 min at 90&ndash;95% max HR, 3 min easy between</strong> &middot; 5 min cool-down.</p>
+  <p class="note">This is the single most studied protocol for raising VO2max &mdash; Helgerud 2007 found roughly 7% gains in 8 weeks, beating moderate continuous training at matched workload, and a later trial found it beat sprint intervals for both VO2max and stroke volume. The 4-minute length is the point: it is long enough to hold you near VO2max, which is what drives the adaptation. Don&rsquo;t shorten it.</p>
   <h3>Low-impact options, best first</h3>
   <ol>
     <li>Cross trainer &mdash; closest to running</li>
@@ -469,6 +467,21 @@ footer{margin-top:38px;padding-top:16px;border-top:1px solid var(--rule);
     <li>Zone 2 = full sentences, no gasping</li>
     <li>Test 5k at weeks 1, 6 and 12</li>
   </ul>
+  <h3>Is this enough? Is it too much?</h3>
+  <table>
+    <thead><tr><th>Dose</th><th>Verdict</th></tr></thead>
+    <tbody>
+      <tr><td>Guideline minimum</td><td>150 min moderate or 75 min vigorous / week</td></tr>
+      <tr><td>Maximum mortality benefit</td><td>3&ndash;5&times; the minimum. Past that the curve flattens</td></tr>
+      <tr><td><strong>You, here</strong></td><td>~150 min moderate-equivalent structured, plus 10&ndash;12k steps &mdash; roughly <strong>2.5&ndash;3&times; the minimum</strong></td></tr>
+      <tr><td>Too much, for you</td><td>4+ structured sessions, any session over 45&ndash;60 min, or a second run</td></tr>
+    </tbody>
+  </table>
+  <div class="callout">
+    <p><strong>You are already past the steep part of the curve.</strong> Adding a fourth session would buy a sliver of health benefit and cross the frequency threshold where interference with hypertrophy starts showing up. The remaining gains are in <em>quality</em>, not quantity &mdash; which is why the interval session is now a 4 &times; 4.</p>
+    <p>Worth separating two things: <strong>VO2max as an outcome has no ceiling of benefit</strong>, but <strong>cardio volume as an input has steep diminishing returns</strong>. You raise the first through intensity, not hours. Two to three hard sessions a week is where the VO2max research lands, and with the run alternating to intervals every other block, that is what you are doing.</p>
+  </div>
+
   <div class="callout">
     <p><strong>Expect:</strong> sub-26 very likely. Sub-25 possible but not guaranteed on one run a week. Add the second run after the cut.</p>
   </div>
@@ -480,7 +493,7 @@ footer{margin-top:38px;padding-top:16px;border-top:1px solid var(--rule);
     <thead><tr><th>Fix</th><th>Detail</th></tr></thead>
     <tbody>
       <tr><td><strong>Cadence</strong></td><td>Count over 30 sec, double it. Under 165 spm &rarr; target +10%. Cuts patellofemoral force ~14%</td></tr>
-      <tr><td><strong>Load</strong></td><td>Not settling? Drop lunges from Lower C for 2 weeks</td></tr>
+      <tr><td><strong>Load</strong></td><td>Not settling? Drop the abduction machine and ease the leg press depth for 2 weeks</td></tr>
       <tr><td><strong>Spikes</strong></td><td>One run a week is already the right response</td></tr>
     </tbody>
   </table>
@@ -540,7 +553,7 @@ footer{margin-top:38px;padding-top:16px;border-top:1px solid var(--rule);
     <tbody>
       <tr><td class="lead">1</td><td>Raise floor 8k &rarr; 10k</td><td class="num">+70</td></tr>
       <tr><td class="lead">2</td><td>Raise floor 10k &rarr; 12k</td><td class="num">+70</td></tr>
-      <tr><td class="lead">3</td><td>Add 15 min to Upper A zone 2</td><td class="num">+130</td></tr>
+      <tr><td class="lead">3</td><td>Add 15 min to the Pull A zone 2</td><td class="num">+130</td></tr>
       <tr><td class="lead">4</td><td>Drop calories to 2,150</td><td class="num">+150</td></tr>
     </tbody>
   </table>
@@ -638,7 +651,7 @@ footer{margin-top:38px;padding-top:16px;border-top:1px solid var(--rule);
 
 </main>
 
-<footer>Installed from your home screen, this works offline and remembers your weights. Always open it from the home-screen icon &mdash; Safari keeps separate storage. <span style="opacity:.6">build 2026-07-29f</span></footer>
+<footer>Installed from your home screen, this works offline and remembers your weights. Always open it from the home-screen icon &mdash; Safari keeps separate storage. <span style="opacity:.6">build 2026-07-30c</span></footer>
 
 </div>
 <div id="saved" role="status" aria-live="polite">Saved</div>
