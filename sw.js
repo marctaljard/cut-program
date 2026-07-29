@@ -1,4 +1,4 @@
-var CACHE = 'cutprog-v1';
+var CACHE = 'cutprog-v2';
 var FILES = ['./', './index.html', './manifest.webmanifest',
              './icon-192.png', './icon-512.png', './apple-touch-icon.png'];
 
@@ -13,16 +13,32 @@ self.addEventListener('activate', function(e){
   }).then(function(){ return self.clients.claim(); }));
 });
 
-// cache-first: the gym has no signal
 self.addEventListener('fetch', function(e){
   if (e.request.method !== 'GET') return;
+  var isPage = e.request.mode === 'navigate' || /\/(index\.html)?$/.test(new URL(e.request.url).pathname);
+
+  if (isPage) {
+    // network-first: picks up your GitHub updates, still works with no signal
+    e.respondWith(
+      fetch(e.request).then(function(res){
+        var copy = res.clone();
+        caches.open(CACHE).then(function(c){ c.put('./index.html', copy); });
+        return res;
+      }).catch(function(){
+        return caches.match('./index.html').then(function(hit){ return hit || caches.match('./'); });
+      })
+    );
+    return;
+  }
+
+  // everything else cache-first
   e.respondWith(
     caches.match(e.request).then(function(hit){
       return hit || fetch(e.request).then(function(res){
         var copy = res.clone();
         caches.open(CACHE).then(function(c){ c.put(e.request, copy); });
         return res;
-      }).catch(function(){ return caches.match('./index.html'); });
+      });
     })
   );
 });
