@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Cut Program</title>
+<meta name="theme-color" content="#1F5F4A">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Cut">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<style>
+:root{
+  --paper:#FCFCFA; --ink:#16181D; --muted:#6B6F74; --rule:#E4E4DF;
+  --accent:#1F5F4A; --accent-soft:#E8F0EC; --warn:#8A4B1F; --field:#FFFFFF;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --paper:#131519; --ink:#E6E7E4; --muted:#9BA0A6; --rule:#282B30;
+    --accent:#63C39C; --accent-soft:#1A2C25; --warn:#D9A273; --field:#1B1E23;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+  font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:44rem;margin:0 auto;padding:0 18px 5rem}
+@media (min-width:700px){ body{font-size:17px} .wrap{padding:0 28px 6rem} }
+
+.top{padding:28px 0 18px}
+h1{font-size:1.45rem;line-height:1.15;margin:0;letter-spacing:-0.02em;font-weight:650}
+.sub{font-family:var(--mono);font-size:0.78rem;color:var(--muted);margin-top:6px}
+
+.keys{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule);
+  border:1px solid var(--rule);border-radius:10px;overflow:hidden;margin:18px 0 4px}
+@media (min-width:560px){ .keys{grid-template-columns:repeat(4,1fr)} }
+.key{background:var(--paper);padding:11px 12px}
+.key dt{font-size:0.65rem;text-transform:uppercase;letter-spacing:0.09em;
+  color:var(--muted);margin:0 0 3px;font-weight:600}
+.key dd{margin:0;font-family:var(--mono);font-size:0.95rem;
+  font-variant-numeric:tabular-nums;line-height:1.25}
+
+nav{position:sticky;top:0;z-index:20;background:var(--paper);
+  border-bottom:1px solid var(--rule);margin:22px -18px 0;padding:0 18px}
+@media (min-width:700px){ nav{margin:22px -28px 0;padding:0 28px} }
+.navscroll{display:flex;gap:6px;overflow-x:auto;padding:9px 0;
+  scrollbar-width:none;-ms-overflow-style:none}
+.navscroll::-webkit-scrollbar{display:none}
+.navscroll a{flex:0 0 auto;text-decoration:none;color:var(--muted);font-size:0.76rem;
+  font-weight:550;padding:5px 11px;border-radius:999px;border:1px solid transparent;white-space:nowrap}
+.navscroll a:hover{color:var(--ink)}
+.navscroll a.on{color:var(--accent);background:var(--accent-soft);
+  border-color:color-mix(in srgb,var(--accent) 22%,transparent)}
+a:focus-visible,input:focus-visible,button:focus-visible,textarea:focus-visible{
+  outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+
+section{padding-top:34px;scroll-margin-top:60px}
+h2{font-size:1.08rem;font-weight:650;letter-spacing:-0.01em;margin:0 0 12px;
+  padding-bottom:8px;border-bottom:2px solid var(--ink);display:flex;align-items:baseline;gap:9px}
+h2 .n{font-family:var(--mono);font-size:0.72rem;color:var(--accent);font-weight:600}
+h3{font-size:0.95rem;font-weight:650;margin:26px 0 8px}
+h3:first-of-type{margin-top:18px}
+p{margin:10px 0}
+ul,ol{margin:10px 0;padding-left:1.25rem}
+li{margin:4px 0}
+strong{font-weight:650}
+.note{color:var(--muted);font-size:0.85rem;line-height:1.5;margin:9px 0 0;
+  padding-left:11px;border-left:2px solid var(--rule)}
+.lede{color:var(--muted);font-size:0.9rem;margin:0 0 12px}
+
+.card{border:1px solid var(--rule);border-radius:11px;padding:14px;margin:14px 0 0}
+.card h3{margin:0 0 2px;font-size:1rem}
+.tag{display:inline-block;font-family:var(--mono);font-size:0.7rem;color:var(--accent);
+  background:var(--accent-soft);padding:3px 8px;border-radius:5px;margin:7px 0 2px}
+.flow{font-family:var(--mono);font-size:0.8rem;line-height:1.7;background:var(--accent-soft);
+  color:var(--accent);padding:10px 12px;border-radius:8px;margin:12px 0;overflow-wrap:anywhere}
+
+/* exercise rows with inputs */
+.exhead{display:flex;justify-content:flex-end;gap:6px;margin:12px 0 2px;
+  font-size:0.62rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);font-weight:600}
+.exhead span{width:62px;text-align:center}
+.ex{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--rule)}
+.ex:last-of-type{border-bottom:0}
+.exi{flex:1 1 auto;min-width:0}
+.exn{display:block;font-size:0.9rem;line-height:1.3}
+.exp{display:block;font-family:var(--mono);font-size:0.72rem;color:var(--muted);
+  font-variant-numeric:tabular-nums;margin-top:2px}
+.exf{flex:0 0 auto;display:flex;gap:6px}
+.exf input{width:62px;padding:7px 6px;font-family:var(--mono);font-size:0.88rem;
+  font-variant-numeric:tabular-nums;text-align:center;color:var(--ink);
+  background:var(--field);border:1px solid var(--rule);border-radius:7px}
+.exf input::placeholder{color:var(--muted);opacity:0.6;font-size:0.78rem}
+.exf input:focus{border-color:var(--accent);background:var(--paper)}
+
+table{width:100%;border-collapse:collapse;margin:12px 0 4px;font-size:0.88rem}
+th{text-align:left;font-size:0.66rem;text-transform:uppercase;letter-spacing:0.08em;
+  color:var(--muted);font-weight:600;padding:0 0 7px;border-bottom:1px solid var(--rule)}
+td{padding:9px 0;border-bottom:1px solid var(--rule);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right;font-family:var(--mono);
+  font-variant-numeric:tabular-nums;white-space:nowrap;padding-left:10px}
+td.lead{text-align:left;font-family:var(--mono);padding-left:0;padding-right:14px;width:1%}
+tbody tr.total td{font-weight:650}
+tbody tr.total td:first-child{color:var(--accent)}
+
+.callout{border:1px solid var(--rule);border-left:3px solid var(--accent);border-radius:8px;
+  padding:11px 13px;margin:14px 0;font-size:0.9rem}
+.callout p{margin:0}
+.callout p+p{margin-top:7px}
+.warn{border-left-color:var(--warn)}
+.warn strong{color:var(--warn)}
+
+.bar{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0 0}
+button{font-family:var(--sans);font-size:0.8rem;font-weight:550;color:var(--ink);
+  background:var(--field);border:1px solid var(--rule);border-radius:8px;
+  padding:8px 13px;cursor:pointer}
+button:hover{border-color:var(--accent);color:var(--accent)}
+button.danger:hover{border-color:var(--warn);color:var(--warn)}
+textarea{width:100%;min-height:110px;margin-top:10px;padding:10px;font-family:var(--mono);
+  font-size:0.75rem;color:var(--ink);background:var(--field);
+  border:1px solid var(--rule);border-radius:8px;resize:vertical}
+.hidden{display:none}
+#saved{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(8px);
+  background:var(--accent);color:var(--paper);font-family:var(--mono);font-size:0.72rem;
+  padding:7px 14px;border-radius:999px;opacity:0;pointer-events:none;transition:all .18s;z-index:50}
+#saved.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+footer{margin-top:38px;padding-top:16px;border-top:1px solid var(--rule);
+  color:var(--muted);font-size:0.78rem}
+
+@media print{
+  nav,.bar,#saved,#io{display:none}
+  body{font-size:11pt;background:#fff;color:#000}
+  section,.card,.callout{break-inside:avoid}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <h1>Cut Program</h1>
+  <div class="sub">82.5 &rarr; 78 kg &nbsp;&middot;&nbsp; 16% &rarr; 11% BF &nbsp;&middot;&nbsp; 12&ndash;14 weeks</div>
+  <dl class="keys">
+    <div class="key"><dt>Calories</dt><dd>2,300</dd></div>
+    <div class="key"><dt>Protein</dt><dd>180 g</dd></div>
+    <div class="key"><dt>Fat</dt><dd>70 g</dd></div>
+    <div class="key"><dt>Carbs</dt><dd>235 g</dd></div>
+    <div class="key"><dt>Steps</dt><dd>8k &rarr; 12k</dd></div>
+    <div class="key"><dt>Lifting</dt><dd>7 / week</dd></div>
+    <div class="key"><dt>Cardio</dt><dd>1 run + 2</dd></div>
+    <div class="key"><dt>Rate</dt><dd>0.45 kg/wk</dd></div>
+  </dl>
+</header>
+
+<nav aria-label="Sections"><div class="navscroll">
+  <a href="#split">Split</a><a href="#sessions">Sessions</a><a href="#volume">Volume</a>
+  <a href="#progression">Progression</a><a href="#fatigue">Fatigue</a><a href="#cardio">Cardio</a>
+  <a href="#knees">Knees</a><a href="#macros">Macros</a><a href="#activity">Activity</a>
+  <a href="#food">Food</a><a href="#data">Data</a>
+</div></nav>
+
+<main>
+
+<section id="split">
+  <h2><span class="n">01</span> Split</h2>
+  <p>Rolling 6-session block. No reset day &mdash; day 7 is just the next session.</p>
+  <div class="flow">Lower A &rarr; Upper A &rarr; Lower B &rarr; Upper B &rarr; Lower C &rarr; Upper C &rarr; repeat</div>
+  <ul>
+    <li>Each muscle: ~3.5&times; / week</li>
+    <li>Per session: 2&ndash;5 sets per muscle</li>
+    <li>Per week: 12&ndash;15 direct sets per muscle</li>
+  </ul>
+</section>
+
+<section id="sessions">
+  <h2><span class="n">02</span> Sessions</h2>
+  <p class="lede"><strong>RIR</strong> = reps left in the tank. Rest 2.5&ndash;3 min on the first two exercises, 90 sec after. Type your working weight and last reps into each row &mdash; they save automatically.</p>
+  <div class="card">
+    <h3>Lower A &mdash; squat</h3>
+    <div class="exhead"><span>kg</span><span>reps</span></div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Back squat</span><span class="exp">3 &times; 5&ndash;7 &middot; RIR 2</span></div>
+      <div class="exf"><input data-k="la1-w" inputmode="decimal" placeholder="kg" aria-label="Back squat weight"><input data-k="la1-r" inputmode="numeric" placeholder="reps" aria-label="Back squat reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Lying leg curl</span><span class="exp">2 &times; 8&ndash;10 &middot; RIR 1</span></div>
+      <div class="exf"><input data-k="la2-w" inputmode="decimal" placeholder="kg" aria-label="Lying leg curl weight"><input data-k="la2-r" inputmode="numeric" placeholder="reps" aria-label="Lying leg curl reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Leg press (deep)</span><span class="exp">2 &times; 8&ndash;12 &middot; RIR 1</span></div>
+      <div class="exf"><input data-k="la3-w" inputmode="decimal" placeholder="kg" aria-label="Leg press (deep) weight"><input data-k="la3-r" inputmode="numeric" placeholder="reps" aria-label="Leg press (deep) reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Leg press calf raise</span><span class="exp">3 &times; 8&ndash;12 &middot; RIR 0&ndash;1</span></div>
+      <div class="exf"><input data-k="la4-w" inputmode="decimal" placeholder="kg" aria-label="Leg press calf raise weight"><input data-k="la4-r" inputmode="numeric" placeholder="reps" aria-label="Leg press calf raise reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Weighted decline sit-up</span><span class="exp">2 &times; 10&ndash;15 &middot; RIR 1</span></div>
+      <div class="exf"><input data-k="la5-w" inputmode="decimal" placeholder="kg" aria-label="Weighted decline sit-up weight"><input data-k="la5-r" inputmode="numeric" placeholder="reps" aria-label="Weighted decline sit-up reps"></div>
+    </div>
+    <p class="note">No seated curl at your gym, so the RDLs in Lower B are the only long-muscle-length hamstring work in the programme. Don&rsquo;t drop them.</p>
+  </div>
+  <div class="card">
+    <h3>Upper A &mdash; horizontal push</h3>
+    <span class="tag">+ Zone 2, 45&ndash;50 min &middot; cross trainer or incline walk</span>
+    <div class="exhead"><span>kg</span><span>reps</span></div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Flat barbell bench</span><span class="exp">3 &times; 5&ndash;7 &middot; RIR 2</span></div>
+      <div class="exf"><input data-k="ua1-w" inputmode="decimal" placeholder="kg" aria-label="Flat barbell bench weight"><input data-k="ua1-r" inputmode="numeric" placeholder="reps" aria-label="Flat barbell bench reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Chest-supported row</span><span class="exp">3 &times; 8&ndash;10 &middot; RIR 1</span></div>
+      <div class="exf"><input data-k="ua2-w" inputmode="decimal" placeholder="kg" aria-label="Chest-supported row weight"><input data-k="ua2-r" inputmode="numeric" placeholder="reps" aria-label="Chest-supported row reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Incline DB press</span><span class="exp">2 &times; 8&ndash;10 &middot; RIR 1</span></div>
+      <div class="exf"><input data-k="ua3-w" inputmode="decimal" placeholder="kg" aria-label="Incline DB press weight"><input data-k="ua3-r" inputmode="numeric" placeholder="reps" aria-label="Incline DB press reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Lat pulldown, wide</span><span class="exp">2 &times; 8&ndash;12 &middot; RIR 1</span></div>
+      <div class="exf"><input data-k="ua4-w" inputmode="decimal" placeholder="kg" aria-label="Lat pulldown, wide weight"><input data-k="ua4-r" inputmode="numeric" placeholder="reps" aria-label="Lat pulldown, wide reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Cable lateral raise</span><span class="exp">3 &times; 12&ndash;15 &middot; RIR 0&ndash;1</span></div>
+      <div class="exf"><input data-k="ua5-w" inputmode="decimal" placeholder="kg" aria-label="Cable lateral raise weight"><input data-k="ua5-r" inputmode="numeric" placeholder="reps" aria-label="Cable lateral raise reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Rear delt cable flye</span><span class="exp">2 &times; 12&ndash;20 &middot; RIR 0&ndash;1</span></div>
+      <div class="exf"><input data-k="ua6-w" inputmode="decimal" placeholder="kg" aria-label="Rear delt cable flye weight"><input data-k="ua6-r" inputmode="numeric" placeholder="reps" aria-label="Rear delt cable flye reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Overhead cable triceps ext</span><span class="exp">2 &times; 8&ndash;12 &middot; RIR 0&ndash;1</span></div>
+      <div class="exf"><input data-k="ua7-w" inputmode="decimal" placeholder="kg" aria-label="Overhead cable triceps ext weight"><input data-k="ua7-r" inputmode="numeric" placeholder="reps" aria-label="Overhead cable triceps ext reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Incline DB curl</span><span class="exp">2 &times; 8&ndash;12 &middot; RIR 0&ndash;1</span></div>
+      <div class="exf"><input data-k="ua8-w" inputmode="decimal" placeholder="kg" aria-label="Incline DB curl weight"><input data-k="ua8-r" inputmode="numeric" placeholder="reps" aria-label="Incline DB curl reps"></div>
+    </div>
+    <p class="note">Overhead extension beats pushdowns for triceps. Incline curl beats standing for biceps. Both load the muscle at long lengths.</p>
+  </div>
+  <div class="card">
+    <h3>Lower B &mdash; hinge</h3>
+    <div class="exhead"><span>kg</span><span>reps</span></div>
+    <div class="ex">
+      <div class="exi"><span class="exn">DB Romanian deadlift</span><span class="exp">3 &times; 6&ndash;8 &middot; RIR 2</span></div>
+      <div class="exf"><input data-k="lb1-w" inputmode="decimal" placeholder="kg" aria-label="DB Romanian deadlift weight"><input data-k="lb1-r" inputmode="numeric" placeholder="reps" aria-label="DB Romanian deadlift reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Hack squat</span><span class="exp">3 &times; 6&ndash;10 &middot; RIR 1&ndash;2</span></div>
+      <div class="exf"><input data-k="lb2-w" inputmode="decimal" placeholder="kg" aria-label="Hack squat weight"><input data-k="lb2-r" inputmode="numeric" placeholder="reps" aria-label="Hack squat reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Lying leg curl</span><span class="exp">2 &times; 10&ndash;12 &middot; RIR 0&ndash;1</span></div>
+      <div class="exf"><input data-k="lb3-w" inputmode="decimal" placeholder="kg" aria-label="Lying leg curl weight"><input data-k="lb3-r" inputmode="numeric" placeholder="reps" aria-label="Lying leg curl reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Standing calf raise (machine)</span><span class="exp">3 &times; 10&ndash;15 &middot; RIR 0&ndash;1</span></div>
+      <div class="exf"><input data-k="lb4-w" inputmode="decimal" placeholder="kg" aria-label="Standing calf raise (machine) weight"><input data-k="lb4-r" inputmode="numeric" placeholder="reps" aria-label="Standing calf raise (machine) reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Hanging leg or knee raise</span><span class="exp">2 &times; 8&ndash;15 &middot; RIR 1</span></div>
+      <div class="exf"><input data-k="lb5-w" inputmode="decimal" placeholder="kg" aria-label="Hanging leg or knee raise weight"><input data-k="lb5-r" inputmode="numeric" placeholder="reps" aria-label="Hanging leg or knee raise reps"></div>
+    </div>
+    <p class="note">RDL: hips back, minimal knee bend, stop before your back rounds. The stretch is the point, not the depth.</p>
+  </div>
+  <div class="card">
+    <h3>Upper B &mdash; vertical pull</h3>
+    <span class="tag">+ THE RUN &middot; ~5k</span>
+    <div class="exhead"><span>kg</span><span>reps</span></div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Pull-ups</span><span class="exp">3 &times; AMRAP &middot; RIR 1</span></div>
+      <div class="exf"><input data-k="ub1-w" inputmode="decimal" placeholder="kg" aria-label="Pull-ups weight"><input data-k="ub1-r" inputmode="numeric" placeholder="reps" aria-label="Pull-ups reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Incline DB press</span><span class="exp">2 &times; 8&ndash;10 &middot; RIR 1&ndash;2</span></div>
+      <div class="exf"><input data-k="ub2-w" inputmode="decimal" placeholder="kg" aria-label="Incline DB press weight"><input data-k="ub2-r" inputmode="numeric" placeholder="reps" aria-label="Incline DB press reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Single-arm cable row</span><span class="exp">2 &times; 10&ndash;12 &middot; RIR 1</span></div>
+      <div class="exf"><input data-k="ub3-w" inputmode="decimal" placeholder="kg" aria-label="Single-arm cable row weight"><input data-k="ub3-r" inputmode="numeric" placeholder="reps" aria-label="Single-arm cable row reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Pec deck / cable flye</span><span class="exp">2 &times; 10&ndash;15 &middot; RIR 0&ndash;1</span></div>
+      <div class="exf"><input data-k="ub4-w" inputmode="decimal" placeholder="kg" aria-label="Pec deck / cable flye weight"><input data-k="ub4-r" inputmode="numeric" placeholder="reps" aria-label="Pec deck / cable flye reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Rear delt cable flye</span><span class="exp">2 &times; 12&ndash;20 &middot; RIR 0&ndash;1</span></div>
+      <div class="exf"><input data-k="ub5-w" inputmode="decimal" placeholder="kg" aria-label="Rear delt cable flye weight"><input data-k="ub5-r" inputmode="numeric" placeholder="reps" aria-label="Rear delt cable flye reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Cable lateral raise</span><span class="exp">2 &times; 12&ndash;15 &middot; RIR 0&ndash;1</span></div>
+      <div class="exf"><input data-k="ub6-w" inputmode="decimal" placeholder="kg" aria-label="Cable lateral raise weight"><input data-k="ub6-r" inputmode="numeric" placeholder="reps" aria-label="Cable lateral raise reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Cable pushdown</span><span class="exp">2 &times; 10&ndash;15 &middot; RIR 0&ndash;1</span></div>
+      <div class="exf"><input data-k="ub7-w" inputmode="decimal" placeholder="kg" aria-label="Cable pushdown weight"><input data-k="ub7-r" inputmode="numeric" placeholder="reps" aria-label="Cable pushdown reps"></div>
+    </div>
+    <p class="note">Past 12 clean pull-ups &rarr; add load or slow the eccentric. Don&rsquo;t chase 20-rep sets.</p>
+  </div>
+  <div class="card">
+    <h3>Lower C &mdash; quads, lighter</h3>
+    <div class="exhead"><span>kg</span><span>reps</span></div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Leg press (deep)</span><span class="exp">2 &times; 10&ndash;12 &middot; RIR 1</span></div>
+      <div class="exf"><input data-k="lc1-w" inputmode="decimal" placeholder="kg" aria-label="Leg press (deep) weight"><input data-k="lc1-r" inputmode="numeric" placeholder="reps" aria-label="Leg press (deep) reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Lying leg curl</span><span class="exp">2 &times; 10&ndash;12 &middot; RIR 0&ndash;1</span></div>
+      <div class="exf"><input data-k="lc2-w" inputmode="decimal" placeholder="kg" aria-label="Lying leg curl weight"><input data-k="lc2-r" inputmode="numeric" placeholder="reps" aria-label="Lying leg curl reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Leg extension</span><span class="exp">2 &times; 12&ndash;15 &middot; RIR 0&ndash;1</span></div>
+      <div class="exf"><input data-k="lc3-w" inputmode="decimal" placeholder="kg" aria-label="Leg extension weight"><input data-k="lc3-r" inputmode="numeric" placeholder="reps" aria-label="Leg extension reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Barbell or DB lunge (in rack)</span><span class="exp">2 &times; 8&ndash;10 / leg &middot; RIR 2</span></div>
+      <div class="exf"><input data-k="lc4-w" inputmode="decimal" placeholder="kg" aria-label="Barbell or DB lunge (in rack) weight"><input data-k="lc4-r" inputmode="numeric" placeholder="reps" aria-label="Barbell or DB lunge (in rack) reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Leg press calf raise</span><span class="exp">2 &times; 12&ndash;15 &middot; RIR 0&ndash;1</span></div>
+      <div class="exf"><input data-k="lc5-w" inputmode="decimal" placeholder="kg" aria-label="Leg press calf raise weight"><input data-k="lc5-r" inputmode="numeric" placeholder="reps" aria-label="Leg press calf raise reps"></div>
+    </div>
+    <p class="note">Lightest session. Lunges are the first thing to cut when you&rsquo;re fatigued or the knees complain.</p>
+  </div>
+  <div class="card">
+    <h3>Upper C &mdash; delts and arms</h3>
+    <span class="tag">+ Bike intervals &middot; 30 min</span>
+    <div class="exhead"><span>kg</span><span>reps</span></div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Seated DB shoulder press</span><span class="exp">3 &times; 6&ndash;10 &middot; RIR 1&ndash;2</span></div>
+      <div class="exf"><input data-k="uc1-w" inputmode="decimal" placeholder="kg" aria-label="Seated DB shoulder press weight"><input data-k="uc1-r" inputmode="numeric" placeholder="reps" aria-label="Seated DB shoulder press reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Lat pulldown, neutral close</span><span class="exp">3 &times; 8&ndash;12 &middot; RIR 1</span></div>
+      <div class="exf"><input data-k="uc2-w" inputmode="decimal" placeholder="kg" aria-label="Lat pulldown, neutral close weight"><input data-k="uc2-r" inputmode="numeric" placeholder="reps" aria-label="Lat pulldown, neutral close reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Flat DB press</span><span class="exp">2 &times; 8&ndash;12 &middot; RIR 1</span></div>
+      <div class="exf"><input data-k="uc3-w" inputmode="decimal" placeholder="kg" aria-label="Flat DB press weight"><input data-k="uc3-r" inputmode="numeric" placeholder="reps" aria-label="Flat DB press reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Lateral raise</span><span class="exp">3 &times; 12&ndash;20 &middot; RIR 0&ndash;1</span></div>
+      <div class="exf"><input data-k="uc4-w" inputmode="decimal" placeholder="kg" aria-label="Lateral raise weight"><input data-k="uc4-r" inputmode="numeric" placeholder="reps" aria-label="Lateral raise reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Rear delt flye</span><span class="exp">2 &times; 12&ndash;20 &middot; RIR 0&ndash;1</span></div>
+      <div class="exf"><input data-k="uc5-w" inputmode="decimal" placeholder="kg" aria-label="Rear delt flye weight"><input data-k="uc5-r" inputmode="numeric" placeholder="reps" aria-label="Rear delt flye reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Overhead EZ / DB extension</span><span class="exp">2 &times; 8&ndash;12 &middot; RIR 0&ndash;1</span></div>
+      <div class="exf"><input data-k="uc6-w" inputmode="decimal" placeholder="kg" aria-label="Overhead EZ / DB extension weight"><input data-k="uc6-r" inputmode="numeric" placeholder="reps" aria-label="Overhead EZ / DB extension reps"></div>
+    </div>
+    <div class="ex">
+      <div class="exi"><span class="exn">Cable curl (elbows back)</span><span class="exp">2 &times; 8&ndash;12 &middot; RIR 0&ndash;1</span></div>
+      <div class="exf"><input data-k="uc7-w" inputmode="decimal" placeholder="kg" aria-label="Cable curl (elbows back) weight"><input data-k="uc7-r" inputmode="numeric" placeholder="reps" aria-label="Cable curl (elbows back) reps"></div>
+    </div>
+    <p class="note">Shoulder press bothering you? Swap to a landmine press or neutral-grip machine. No meaningful loss.</p>
+  </div>
+</section>
+
+<section id="volume">
+  <h2><span class="n">03</span> Weekly volume</h2>
+  <table>
+    <thead><tr><th>Muscle</th><th class="num">Sets / week</th></tr></thead>
+    <tbody>
+      <tr><td>Quads</td><td class="num">14</td></tr>
+      <tr><td>Lats / upper back</td><td class="num">15</td></tr>
+      <tr><td>Chest</td><td class="num">13</td></tr>
+      <tr><td>Hamstrings</td><td class="num">10.5</td></tr>
+      <tr><td>Side delts</td><td class="num">9.5</td></tr>
+      <tr><td>Calves</td><td class="num">9.5</td></tr>
+      <tr><td>Rear delts</td><td class="num">7</td></tr>
+      <tr><td>Triceps</td><td class="num">7</td></tr>
+      <tr><td>Biceps</td><td class="num">7</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Arms count direct sets only &mdash; 25+ pressing and pulling sets sit on top. Lagging at week 4? Add one set each to Upper A and Upper C. No more.</p>
+</section>
+
+<section id="progression">
+  <h2><span class="n">04</span> Progression</h2>
+  <ol>
+    <li>Pick a load you can hit at the bottom of the rep range at target RIR</li>
+    <li>Add reps weekly until you reach the top of the range</li>
+    <li>Add load (+2.5 kg upper, +5 kg lower), drop back to the bottom</li>
+  </ol>
+  <div class="callout">
+    <p><strong>In a deficit, holding a lift is a win.</strong></p>
+    <p>Expect machines and accessories to climb and the big compounds to hold. That&rsquo;s success, not failure.</p>
+  </div>
+</section>
+
+<section id="fatigue">
+  <h2><span class="n">05</span> Fatigue rules</h2>
+  <p class="lede">No rest days, so this is how fatigue gets managed. Check before each session.</p>
+  <table>
+    <thead><tr><th>Flag</th></tr></thead>
+    <tbody>
+      <tr><td>Lift down 2 sessions running</td></tr>
+      <tr><td>Under 6.5 h sleep</td></tr>
+      <tr><td>Joint sharp, not sore</td></tr>
+      <tr><td>Resting HR +7 bpm</td></tr>
+      <tr><td>Zero desire to train</td></tr>
+    </tbody>
+  </table>
+  <table>
+    <thead><tr><th>Flags</th><th>Action</th></tr></thead>
+    <tbody>
+      <tr><td class="lead">1</td><td>Train normally</td></tr>
+      <tr><td class="lead">2</td><td>Drop last 2 exercises, all 3 RIR, skip cardio</td></tr>
+      <tr><td class="lead">3+</td><td>As above <strong>+ take the day off</strong></td></tr>
+    </tbody>
+  </table>
+  <p class="note">The 3-flag rule is a stop-loss, not a rest day. Expect to use it about twice in 12 weeks. Weekly use means drop Lower C from the rotation.</p>
+  <div class="callout">
+    <p><strong>Deload &mdash; weeks 7 and 13.</strong> Half the sets, same loads, everything at 4 RIR, two easy low-impact sessions and no run. Still train all 7 days.</p>
+  </div>
+</section>
+
+<section id="cardio">
+  <h2><span class="n">06</span> Cardio</h2>
+  <table>
+    <thead><tr><th>Attached to</th><th>Session</th><th class="num">Time</th></tr></thead>
+    <tbody>
+      <tr><td>Upper A</td><td>Zone 2, low-impact</td><td class="num">45&ndash;50 min</td></tr>
+      <tr><td>Upper B</td><td><strong>The run</strong>, ~5k</td><td class="num">&mdash;</td></tr>
+      <tr><td>Upper C</td><td>Bike intervals</td><td class="num">30 min</td></tr>
+    </tbody>
+  </table>
+  <p class="note">All on upper days. The run sits before Lower C, the lightest leg day. Bike intervals before squats are fine &mdash; no eccentric damage.</p>
+  <h3>The run &mdash; alternate each block</h3>
+  <ul>
+    <li><strong>A:</strong> steady 5k, controlled. Don&rsquo;t race it.</li>
+    <li><strong>B:</strong> 5 &times; 1 km at goal pace, 90 sec walk. Or 6 &times; 800 m.</li>
+  </ul>
+  <h3>Bike intervals</h3>
+  <p>6 &times; 2 min hard / 2 min easy. Or 8 &times; 1 min / 90 sec. Build to 8 &times; 2 min.</p>
+  <h3>Low-impact options, best first</h3>
+  <ol>
+    <li>Cross trainer &mdash; closest to running</li>
+    <li>Incline treadmill walk (12&ndash;15%, 5&ndash;6 km/h) &mdash; most knee-friendly, doubles as steps</li>
+    <li>Bike &mdash; best for intervals, zero interference with lifting</li>
+  </ol>
+  <h3>Rules</h3>
+  <ul>
+    <li>Lift first if same day. Separate by 6 h+ where possible</li>
+    <li>Never run before a lower session</li>
+    <li>Low-impact runs 25&ndash;30% longer than the run it replaces</li>
+    <li>Zone 2 = full sentences, no gasping</li>
+    <li>Test 5k at weeks 1, 6 and 12</li>
+  </ul>
+  <div class="callout">
+    <p><strong>Expect:</strong> sub-26 very likely. Sub-25 possible but not guaranteed on one run a week. Add the second run after the cut.</p>
+  </div>
+</section>
+
+<section id="knees">
+  <h2><span class="n">07</span> Knees</h2>
+  <table>
+    <thead><tr><th>Fix</th><th>Detail</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Cadence</strong></td><td>Count over 30 sec, double it. Under 165 spm &rarr; target +10%. Cuts patellofemoral force ~14%</td></tr>
+      <tr><td><strong>Load</strong></td><td>Not settling? Drop lunges from Lower C for 2 weeks</td></tr>
+      <tr><td><strong>Spikes</strong></td><td>One run a week is already the right response</td></tr>
+    </tbody>
+  </table>
+  <div class="callout warn">
+    <p><strong>See a physio if:</strong> sharp rather than achy &middot; one specific point &middot; swelling &middot; still there 2 weeks after these changes &middot; present when walking.</p>
+  </div>
+</section>
+
+<section id="macros">
+  <h2><span class="n">08</span> Calories and macros</h2>
+  <table>
+    <tbody>
+      <tr><td>Calories</td><td class="num">2,300</td></tr>
+      <tr><td>Protein</td><td class="num">180 g</td></tr>
+      <tr><td>Fat</td><td class="num">70 g</td></tr>
+      <tr><td>Carbs</td><td class="num">235 g</td></tr>
+      <tr><td>Fibre</td><td class="num">30 g</td></tr>
+    </tbody>
+  </table>
+  <p>Fat at 70 g is 0.85 g/kg. <strong>Don&rsquo;t let it drift below 0.8</strong> &mdash; hormones and fat-soluble vitamin absorption.</p>
+  <p><strong>Peri-workout:</strong> 40&ndash;60 g carbs + 30&ndash;40 g protein, 1&ndash;2 h pre-training.</p>
+</section>
+
+<section id="activity">
+  <h2><span class="n">09</span> Daily activity target</h2>
+  <p class="lede">The 2,300 kcal target assumes this much activity. Hit it and the deficit is real.</p>
+  <h3>Baseline active kcal</h3>
+  <table>
+    <thead><tr><th>Source</th><th class="num">kcal / day</th></tr></thead>
+    <tbody>
+      <tr><td>Lifting, 7&times; / week</td><td class="num">~220</td></tr>
+      <tr><td>Cardio, 3 per block</td><td class="num">~190</td></tr>
+      <tr><td>Steps at 8k</td><td class="num">~280</td></tr>
+      <tr><td>Other daily movement</td><td class="num">~100</td></tr>
+      <tr><td>Component total</td><td class="num">~790</td></tr>
+      <tr class="total"><td>Working baseline</td><td class="num">~700</td></tr>
+    </tbody>
+  </table>
+  <p class="note">The working figure sits below the component total on purpose &mdash; same 10% haircut as the calorie estimate.</p>
+  <h3>Steps</h3>
+  <table>
+    <thead><tr><th>Steps</th><th class="num">Active kcal</th><th class="num">vs floor</th></tr></thead>
+    <tbody>
+      <tr><td>8,000</td><td class="num">~280</td><td class="num">baseline</td></tr>
+      <tr><td>10,000</td><td class="num">~350</td><td class="num">+70</td></tr>
+      <tr><td>12,000</td><td class="num">~420</td><td class="num">+140</td></tr>
+    </tbody>
+  </table>
+  <ul>
+    <li><strong>8k is the floor.</strong> The budget assumes it &mdash; a desk-bound day costs you nothing.</li>
+    <li><strong>10&ndash;12k is the target.</strong> Everything above 8k is free deficit.</li>
+    <li>8k &asymp; 6.5 km &asymp; 75 min walking. 12k &asymp; 9.5 km &asymp; 115 min.</li>
+  </ul>
+  <h3>If it stalls</h3>
+  <table>
+    <thead><tr><th>#</th><th>Change</th><th class="num">Effect</th></tr></thead>
+    <tbody>
+      <tr><td class="lead">1</td><td>Raise floor 8k &rarr; 10k</td><td class="num">+70</td></tr>
+      <tr><td class="lead">2</td><td>Raise floor 10k &rarr; 12k</td><td class="num">+70</td></tr>
+      <tr><td class="lead">3</td><td>Add 15 min to Upper A zone 2</td><td class="num">+130</td></tr>
+      <tr><td class="lead">4</td><td>Drop calories to 2,150</td><td class="num">+150</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Steps before calories. One change at a time, hold it 2 weeks.</p>
+  <div class="callout warn">
+    <p><strong>Watch check.</strong> If it reads much over ~700 active on a normal day, it&rsquo;s overestimating. Don&rsquo;t eat it back &mdash; use the fixed 2,300 and let the scale decide.</p>
+  </div>
+</section>
+
+<section id="food">
+  <h2><span class="n">10</span> Food swaps</h2>
+  <table>
+    <thead><tr><th>Swap</th><th class="num">Effect</th></tr></thead>
+    <tbody>
+      <tr><td>2 bagels &rarr; 1 bagel + 2 whole eggs</td><td class="num">&minus;90 kcal<br>+6 g fat<br>+4 g protein</td></tr>
+      <tr><td>Rice Krispie square &rarr; 30 g almonds</td><td class="num">+19 kcal<br>+15 g fat<br>+4 g protein</td></tr>
+      <tr><td>Add 150 g 0% Greek yoghurt</td><td class="num">+90 kcal<br>+15 g protein</td></tr>
+    </tbody>
+  </table>
+  <p>Lands you at <strong>~2,300 kcal / 178 P / 67 F / 200 C.</strong></p>
+  <ul>
+    <li>Keep the chocolate. Adherence beats optimising the last 179 kcal.</li>
+    <li>Salmon or mackerel 2&times; a week &mdash; the only real gap in the diet.</li>
+    <li><strong>Last caffeine by 2pm.</strong> Eight hours of sleep is load-bearing here.</li>
+  </ul>
+</section>
+
+<section id="data">
+  <h2><span class="n">11</span> Your saved weights</h2>
+  <p class="lede">Weights save to this browser on this device as you type. They are <em>not</em> shared between your phone and PC, and some apps open files in a temporary browser that forgets. Back up with the button below.</p>
+  <div class="bar">
+    <button id="btn-backup">Back up</button>
+    <button id="btn-restore">Restore</button>
+    <button id="btn-clear" class="danger">Clear all</button>
+  </div>
+  <div id="io" class="hidden">
+    <textarea id="io-text" spellcheck="false" aria-label="Backup code"></textarea>
+    <div class="bar">
+      <button id="btn-copy">Copy code</button>
+      <button id="btn-apply">Apply pasted code</button>
+      <button id="btn-close">Close</button>
+    </div>
+    <p class="note">Copy this code and keep it in your Notes app or message it to yourself. Paste it back here and press <strong>Apply</strong> to restore on any device.</p>
+  </div>
+  <div class="callout warn">
+    <p><strong>Test it first.</strong> Type a weight in, fully close the page, reopen it. If the number is still there, storage works and you can rely on it. If it&rsquo;s gone, use Back up after each session instead.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>Installed from your home screen, this works offline and remembers your weights. Always open it from the home-screen icon &mdash; Safari keeps separate storage.</footer>
+
+</div>
+<div id="saved" role="status" aria-live="polite">Saved</div>
+
+<script>
+(function(){
+  var KEY='cutprog.v1', inputs=[].slice.call(document.querySelectorAll('input[data-k]'));
+  var toast=document.getElementById('saved'), t;
+
+  function ok(fn,alt){ try{ return fn(); }catch(e){ return alt; } }
+  function read(){ return ok(function(){ return JSON.parse(localStorage.getItem(KEY)||'{}'); },{}); }
+  function write(o){ return ok(function(){ localStorage.setItem(KEY,JSON.stringify(o)); return true; },false); }
+
+  function flash(msg){
+    toast.textContent=msg||'Saved'; toast.classList.add('show');
+    clearTimeout(t); t=setTimeout(function(){ toast.classList.remove('show'); },1100);
+  }
+  function load(){
+    var d=read();
+    inputs.forEach(function(i){ if(d[i.dataset.k]!=null) i.value=d[i.dataset.k]; });
+  }
+  var st;
+  function save(){
+    clearTimeout(st);
+    st=setTimeout(function(){
+      var d={};
+      inputs.forEach(function(i){ if(i.value.trim()!=='') d[i.dataset.k]=i.value.trim(); });
+      flash(write(d)?'Saved':'Storage blocked — use Back up');
+    },350);
+  }
+  inputs.forEach(function(i){ i.addEventListener('input',save); i.addEventListener('change',save); });
+  load();
+
+  var io=document.getElementById('io'), txt=document.getElementById('io-text');
+  function show(v){ io.classList.remove('hidden'); txt.value=v; txt.focus(); }
+  document.getElementById('btn-backup').onclick=function(){ show(JSON.stringify(read())); };
+  document.getElementById('btn-restore').onclick=function(){ show(''); txt.placeholder='Paste your backup code here, then press Apply'; };
+  document.getElementById('btn-close').onclick=function(){ io.classList.add('hidden'); };
+  document.getElementById('btn-copy').onclick=function(){
+    txt.select();
+    if(navigator.clipboard) navigator.clipboard.writeText(txt.value).then(function(){flash('Copied');},function(){flash('Select and copy');});
+    else { ok(function(){document.execCommand('copy');flash('Copied');},flash('Select and copy')); }
+  };
+  document.getElementById('btn-apply').onclick=function(){
+    var d=ok(function(){ return JSON.parse(txt.value); },null);
+    if(!d||typeof d!=='object'){ flash('Code not recognised'); return; }
+    write(d); load(); io.classList.add('hidden'); flash('Restored');
+  };
+  document.getElementById('btn-clear').onclick=function(){
+    if(!confirm('Clear every saved weight and rep? This cannot be undone.')) return;
+    write({}); inputs.forEach(function(i){ i.value=''; }); flash('Cleared');
+  };
+
+  var links=[].slice.call(document.querySelectorAll('.navscroll a')), map={};
+  links.forEach(function(a){ var el=document.querySelector(a.getAttribute('href')); if(el) map[el.id]=a; });
+  if(!('IntersectionObserver' in window)) return;
+  var obs=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      links.forEach(function(l){ l.classList.remove('on'); });
+      var a=map[e.target.id]; if(!a) return;
+      a.classList.add('on');
+      var nav=a.parentNode;
+      nav.scrollTo({left:a.offsetLeft-nav.clientWidth/2+a.clientWidth/2,behavior:'smooth'});
+    });
+  },{rootMargin:'-15% 0px -75% 0px'});
+  Object.keys(map).forEach(function(id){ obs.observe(document.getElementById(id)); });
+})();
+</script>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function(){
+    navigator.serviceWorker.register('sw.js').catch(function(){});
+  });
+}
+</script>
+</body>
+</html>
